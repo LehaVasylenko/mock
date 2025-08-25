@@ -1,0 +1,1 @@
+{"result":[{"node":{"link":"https://dev315171.service-now.com/api/now/v1/table/sys_cluster_state/267b7332c32222109c29d50d050131ed","value":"267b7332c32222109c29d50d050131ed"},"total_memory":"1820","long_semaphore":"0","name":"app130026.ord191.service-now.com:16091","used_memory":"538","transactions":"76902","errors":"6747","uptime":"5 days 4 hours 13 minutes"}]}

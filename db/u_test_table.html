@@ -1,0 +1,2751 @@
+<!DOCTYPE html><html lang="en" class="section_header_html_no_scroll ltr ng-non-bindable" data-doctype="true" dir="ltr" ontouchend="CustomEvent.fireAll('body_clicked', event);"><head><script>document.addEventListener('click', function (event) {
+				CustomEvent.fireAll('body_clicked', event);
+			});
+			document.hasBodyClickedTrigger = 'true';</script><script type="text/javascript"></script><title>ServiceNow</title><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"></meta><meta http-equiv="cache-control" content="public"></meta><meta name="viewport" content="initial-scale=1.0"></meta><script type="text/javascript" data-description="globals population">
+	window.NOW = window.NOW || {};
+	var g_loadTime = new Date();
+	var lastActivity = new Date();
+	var g_lang = 'en';
+	var g_system_lang = 'en';
+	var g_enhanced_activated = 'true';
+	  var g_popup_timeout = parseInt(100);
+	var g_export_warn_threshold = parseInt(10000);
+	  var g_event_handler_ids = {};
+	var g_event_handlers = [];
+	var g_event_handlers_onLoad = [];
+	var g_event_handlers_onSubmit = [];
+	var g_event_handlers_onChange = [];
+	var g_event_handlers_onCellEdit = {};
+	var g_event_handlers_localCache = {};
+	var g_event_handlers_queryTracking = true;
+	var g_user_date_time_format = "yyyy-MM-dd HH:mm:ss";
+	var g_user_date_format = "yyyy-MM-dd";
+	var g_user_decimal_separator = ".";
+	var g_user_grouping_separator = ",";
+	var g_glide_list_separator = ", ";
+	var g_allow_field_dependency_for_templates = ("true" === "true");
+	var g_tz_offset = -25200000;
+	  var g_tz_user_offset = true;
+	var g_first_day_of_week = parseInt(1, 10);
+	var g_date_picker_first_day_of_week = parseInt(0, 10);
+	  var g_full_calendar_edit = true;
+	var g_submitted = false;
+	var g_max_table_length = 80;
+	var g_fontSizePreference = "";
+	var g_fontSize = "10pt";
+	// use to be the sys_property glide.ui.js_error_notify, hard coded for PRB603998
+	var g_jsErrorNotify = "true";
+	var g_cancelPreviousTransaction = true;
+	var g_text_direction = "ltr";
+	var g_glide_list_filter_max_length =  parseInt("0", 10);
+	var g_accessibility = false;
+	var g_accessibility_tooltips = false;
+	var g_accessibility_tooltip_duration = parseInt("10", 10);
+	var g_accessibility_visual_patterns = false;
+	var g_accessibility_screen_reader_table = false;
+	var g_accessibility_date_format = false;
+	var g_detail_row = false;
+	var g_builddate = "06-25-2025_1836";
+	// default values to be used in absence of user preferences are hard coded below
+	// as well as in keyboardShortcuts.js and keyboard_preference_changer.xml
+	window.g_keyboard_shortcuts = {};
+	window.g_keyboard_shortcuts.allow_in_input_fields = false;
+	window.g_keyboard_shortcuts.enabled = true;
+	window.g_keyboard_shortcuts.global_search = {};
+	window.g_keyboard_shortcuts.global_search.enabled = true;
+	window.g_keyboard_shortcuts.global_search.key_combination = 'ctrl+alt+g';
+	window.g_keyboard_shortcuts.main_frame = {};
+	window.g_keyboard_shortcuts.main_frame.enabled = true;
+	window.g_keyboard_shortcuts.main_frame.key_combination = 'ctrl+alt+p';
+	window.g_keyboard_shortcuts.navigator_toggle = {};
+	window.g_keyboard_shortcuts.navigator_toggle.enabled = true;
+	window.g_keyboard_shortcuts.navigator_toggle.key_combination = 'ctrl+alt+c';
+	window.g_keyboard_shortcuts.navigator_filter = {};
+	window.g_keyboard_shortcuts.navigator_filter.enabled = true;
+	window.g_keyboard_shortcuts.navigator_filter.key_combination = 'ctrl+alt+f';
+	window.g_keyboard_shortcuts.impersonator = {}
+	window.g_keyboard_shortcuts.impersonator.enabled = true;
+	window.g_keyboard_shortcuts.impersonator.key_combination = 'ctrl+alt+i';
+	// The `g_concourse_onmessage_enforce_same_origin` and `g_concourse_onmessage_enforce_same_origin_whitelist` variables
+    // do not appear to be used anywhere other than the CustomEventManager, but leaving these for backwards compatability
+	var g_concourse_onmessage_enforce_same_origin = 'true'.toLowerCase() === 'true';
+	var g_concourse_onmessage_enforce_same_origin_whitelist = '';
+	window.g_load_functions = [];
+	window.g_render_functions = [];
+	window.g_late_load_functions = [];
+	window.g_tiny_url = {};
+	window.g_tiny_url.use_tiny = 'true' === 'true';
+	window.g_tiny_url.min_length = parseInt('1024');
+	
+	
+	var g_ck = '56e08fb4c3726a10ed4bd50d05013132316204fa9be517cd64a87c3f49d2b880b7ff8e21';
+	
+
+	
+	var g_acWaitTime = parseInt(250);
+	
+
+	var g_autoRequest = '';
+
+	try {
+		window.NOW.dateFormat = JSON.parse("{\"timeAgo\": false, \"dateBoth\": false}");
+	} catch (e) {
+		window.NOW.dateFormat = {timeAgo: false, dateBoth: false};
+	}
+
+	window.NOW.dateFormat.dateStringFormat = "yyyy-MM-dd";
+	window.NOW.dateFormat.timeStringFormat = "HH:mm:ss";
+	window.NOW.shortDateFormat = false;
+	window.NOW.listTableWrap = true;
+	window.NOW.compact = false;
+  	window.NOW.templateToggle = false;
+	window.NOW.tabbed = true;
+	window.NOW.permalink = true;
+	window.NOW.useSimpleStorage = true;
+	window.NOW.httpRequestCompressionThreshold = 40000;
+	window.NOW.httpRequestCompressionLevel = -1;
+	window.NOW.httpRequestCompressionMemoryLevel = -1;
+	window.NOW.httpRequestCompressionExcludeUrls = 'xmlhttp.do'.split(',');
+	window.NOW.deferAmbConnection = false;
+	window.NOW.deferredAmbConnectionTimeout = 10000;
+	window.NOW.simpleStorageSynch = "e349fea0c3762a10ed4bd50d0501317b";
+	window.NOW.language =  'en';
+	window.NOW.listOpenInAppTab = false;
+	window.NOW.floatingScrollbars = 'false'.toLowerCase() === 'true';
+	
+	window.NOW.user = {};
+	window.NOW.user.preferences = [];
+	window.NOW.user.roles = 'platform_ml_create,taxonomy_admin,import_transformer,ais_admin,catalog_builder_editor,nlu_admin,catalog_template_editor,catalog,catalog_lookup_admin,sn_ex_emp_fd.portal_stats_manager,admin,ml_admin,platform_ml_read,platform_ml_write,chat_admin,search_application_admin,search_relevancy_model_admin,import_set_loader,catalog_admin,sn_ace.ace_user,import_scheduler,pa_viewer,nlu_editor,sn_templated_snip.template_snippet_admin,sn_hr_sp.esc_admin,nlu_user,personalize_dictionary,live_feed_admin,sn_templated_snip.template_snippet_writer,evam_admin,sn_hr_sp.admin,ml_labeler,sp_admin,announcement_admin,pa_data_collector,import_admin,sn_templated_snip.template_snippet_reader,teamdev_code_reviewer,agent_security_admin,user_criteria_admin,image_admin,sn_employee.admin,sn_nlu_workbench.nlu_feedback_admin';
+	window.NOW.user.allRoles = 'platform_ml_create,taxonomy_admin,import_transformer,ais_admin,catalog_builder_editor,nlu_admin,catalog_template_editor,catalog,catalog_lookup_admin,sn_ex_emp_fd.portal_stats_manager,admin,ml_admin,platform_ml_read,platform_ml_write,chat_admin,search_application_admin,search_relevancy_model_admin,import_set_loader,catalog_admin,sn_ace.ace_user,import_scheduler,pa_viewer,nlu_editor,sn_templated_snip.template_snippet_admin,sn_hr_sp.esc_admin,nlu_user,personalize_dictionary,live_feed_admin,sn_templated_snip.template_snippet_writer,evam_admin,sn_hr_sp.admin,ml_labeler,sp_admin,announcement_admin,pa_data_collector,import_admin,sn_templated_snip.template_snippet_reader,teamdev_code_reviewer,agent_security_admin,user_criteria_admin,image_admin,sn_employee.admin,sn_nlu_workbench.nlu_feedback_admin';
+	window.NOW.user.userID = '6816f79cc0a8016401c5a33be04be441';
+	window.NOW.user.departmentID = 'a581ab703710200044e0bfc8bcbe5de8';
+	window.NOW.user.firstName = 'System';
+	window.NOW.user.lastName = 'Administrator';
+	window.NOW.user.name = 'admin';
+  	window.NOW.user.isImpersonating = false;
+	window.NOW.batch_glide_ajax_requests = 'true' === 'true';
+	window.NOW.batch_glide_ajax_requests_max_time_in_queue = ~~'50';
+	window.NOW.batch_glide_ajax_disable_time = ~~'1000';
+
+	window.NOW.currency = {};
+	window.NOW.currency.code = 'USD';
+	window.NOW.locale = {};
+	window.NOW.locale.code = 'en_US';
+
+	window.NOW.attachment = {};
+	
+	window.NOW.attachment.overflow_limit =  parseInt('3', 10);
+	window.NOW.isPolarisEnabled = "true";
+	window.NOW.polaris_page_info ={"canUsePolarisCSS":true,"canUsePolarisTemplates":true,"jvar_form_name":"sys_form_template"};</script><script data-comment="GlideUser initialization">(function() {
+		 g_render_functions.push(setGlideUser);
+		function setGlideUser() {
+			if (window.g_user || !window.GlideUser)
+		return;
+
+		window.g_user = new GlideUser(NOW.user.name,
+			  NOW.user.firstName,
+			  NOW.user.lastName,
+			  NOW.user.roles,
+			  NOW.user.userID,
+			  NOW.user.departmentID);
+		window.g_user.setRoles(NOW.user.allRoles, true);
+		}
+	})();</script><script data-description="NOW glide web analytics siteid and url">window.snWebaConfig = window.snWebaConfig || {};
+		// glide web analytics config
+		window.snWebaConfig.siteId = "0";
+		window.snWebaConfig.trackerURL = "";
+		window.snWebaConfig.webaScriptPath = "/scripts/piwik-3.1.1/thirdparty/piwik.min.js";
+		window.snWebaConfig.ambClient = (window.g_ambClient) ? window.g_ambClient : ((window.amb)? window.amb.getClient(): "");
+		window.snWebaConfig.subscribed = false;</script><script type="text/javascript" src="/ConditionalFocus.jsdbx?v=06-25-2025_1836&amp;c=10_151"></script><script data-description="UX Metrics Data">(function () {
+				try {
+					window.NOW = window.NOW || {};
+					window.NOW.UXMetrics = window.NOW.UXMetrics || {};
+					var config = '{\"subscribers\":[{\"path\":\"/uxasset/externals/@devsnc/ux-metrics-appsee-subscriber/index.jsdbx\",\"config\":{\"apiAuth\":\"9bcea1f318c9486a87e85bbfa42d7bc4\",\"apiKey\":\"f1200f733b282a90baf6048aa4e45a42:635911e2732130107d804c9885f6a78f\",\"uxCollectionMode\":\"Legacy\",\"endpointURL\":\"https://api-appsee.service-now.com\",\"restrictedApps\":\"\",\"allowedPropsInPageNavigate\":\"Entry Page,Page Title\",\"enableUnauthenticatedUserTracking\":\"false\",\"channelType\":\"NextExperience\",\"trackingConsent\":\"Full\",\"user\":{\"domainName\":\"global\",\"roles\":\"platform_ml_create,taxonomy_admin,import_transformer,ais_admin,catalog_builder_editor,nlu_admin,catalog_template_editor,catalog,catalog_lookup_admin,sn_ex_emp_fd.portal_stats_manager,admin,ml_admin,platform_ml_read,platform_ml_write,chat_admin,search_application_admin,search_relevancy_model_admin,import_set_loader,catalog_admin,sn_ace.ace_user,import_scheduler,pa_viewer,nlu_editor,sn_templated_snip.template_snippet_admin,sn_hr_sp.esc_admin,nlu_user,personalize_dictionary,live_feed_admin,sn_templated_snip.template_snippet_writer,evam_admin,sn_hr_sp.admin,ml_labeler,sp_admin,announcement_admin,pa_data_collector,import_admin,sn_templated_snip.template_snippet_reader,teamdev_code_reviewer,agent_security_admin,user_criteria_admin,image_admin,sn_employee.admin,sn_nlu_workbench.nlu_feedback_admin\",\"hashId\":\"5df770fa60fb6ae1caf0326127e92a77c844a1b5484ae8adb201a396877b22c2\",\"domainId\":\"global\"},\"enabled\":\"true\"}}],\"userConsentRequired\":false,\"globalMetricsLevel\":4}';
+					if (config) {
+						window.NOW.UXMetrics.config = JSON.parse(config);
+						window.NOW.UXMetrics.ucmInfo = {
+							user_analytics_consent_text: '',
+							user_consent : "NoConsentRequired"
+						};
+					}
+				} catch(err) {}
+			})();</script><link href="favicon.ico?v=5" rel="shortcut icon"></link><script type="text/javascript" src="/scripts/doctype/xperf_timing.jsx?v=06-25-2025_1836"></script><link type="text/css" rel="stylesheet" href="/styles/css_includes_doctype_polaris.cssx?v=06-25-2025_1836&amp;c=9d0afa24c3762a10ed4bd50d05013157&amp;theme=Polaris"></link><link type="text/css" rel="stylesheet" href="/styles/css_includes_ng_polaris.cssx?v=06-25-2025_1836&amp;c=9d0afa24c3762a10ed4bd50d05013157&amp;theme=Polaris"></link><script>window.NOW = window.NOW || {};
+		 NOW.isUsingPolaris = true;</script><link type="text/css" rel="stylesheet" href="/styles/polarisberg/css_includes_polarisberg.cssx?v=06-25-2025_1836&amp;c=9d0afa24c3762a10ed4bd50d05013157&amp;theme=Polaris"></link><script>NOW.exclude_dark_theme = "false";</script><script type="text/javascript" src="/scripts/polaris_theme_refresh_observer.jsx?v=06-25-2025_1836"></script><link type="text/css" rel="stylesheet" href="/polarisberg_theme_variables.do?c=falsexbCghskg%2FP%2F6IK%2BNB9NZS3wI4dk%3D" id="polarisberg_theme_variables"></link><script>NOW.xperf.cssEnd = NOW.xperf.now();
+			NOW.xperf.scriptBegin = NOW.xperf.now();</script><script src="/legacy_date_time_choices_processor.do?lang=en"></script><script type="text/javascript" src="/scripts/doctype/js_includes_doctype.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><script type="text/javascript" src="/scripts/js_includes_customer.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><script type="text/javascript" src="/scripts/doctype/history_across_tabs.jsx?v=06-25-2025_1836"></script><script type="text/javascript" data-comment="navpage layout preferences, onfocus observation">/**
+	* Every window needs to observe these events.
+	*/
+	if (Prototype.Browser.IE && !isMSIE9) {
+		document.onfocusout = function() { CustomEvent.fireTop(GlideEvent.WINDOW_BLURRED, window); };
+		document.onfocusin = function() { CustomEvent.fireTop(GlideEvent.WINDOW_FOCUSED, window); };
+	} else {
+		Event.observe(window, 'blur', function() { CustomEvent.fireTop(GlideEvent.WINDOW_BLURRED, window); });
+		Event.observe(window, 'focus', function() { CustomEvent.fireTop(GlideEvent.WINDOW_FOCUSED, window); });
+	}</script><script type="text/javascript">g_swLoadTime = new StopWatch(g_loadTime);
+
+    if (window.CustomEvent){
+        CustomEvent.fireAll("ck_updated", "56e08fb4c3726a10ed4bd50d05013132316204fa9be517cd64a87c3f49d2b880b7ff8e21");
+	    CustomEvent.fireTop("navigation.complete", window);
+	}
+
+    addLoadEvent( function() {
+
+		if (isValidTouchDevice())
+			addTouchScrollClassToBody();
+
+      if (typeof g_ck != 'undefined') {
+        CustomEvent.observe("ck_updated", function(ck) { g_ck = ck; });
+        CustomEvent.fireAll("ck_updated", "56e08fb4c3726a10ed4bd50d05013132316204fa9be517cd64a87c3f49d2b880b7ff8e21");CustomEvent.fireTop('user.impersonation', '');}try {
+              var helpico = getTopWindow().document.getElementById("help_ico");
+
+              if (helpico) {
+                var urlname=window.location.pathname.split("?");
+                var search_str = window.location.search;
+                
+                // if this is a form, extract the record's sys_id...
+                var sys_id_loc = search_str.search(/sys_id=[0-9a-f]{32}/i);
+                var sys_id_str = (sys_id_loc != -1) ? search_str.substr(sys_id_loc, 39) : null;
+                
+                // make the URL to our context help processor...
+                var url_search = "?sysparm_url=" + urlname[0];
+                if (sys_id_loc != -1)
+                   url_search += "&" + sys_id_str;
+
+               	helpico.href="context_help.do" + url_search;                	
+              }
+            } catch (exception) {}
+
+      synchCache();
+      pageLoaded();
+    });
+    
+    function synchCache() {
+      try {
+        var w = getTopWindow();
+        if (w.g_cache_message)
+          w.g_cache_message.stamp("e349fea0c3762a10ed4bd50d0501317b");
+  
+        if (w.g_cache_td)
+          w.g_cache_td.stamp("65bff238c37a6a10ed4bd50d050131b3");
+      } catch(e) {}
+    }
+
+    function isValidTouchDevice() {
+		var navigator = window.navigator || {};
+		var devices;
+		try {
+			devices = 'iPad,Android'.split(',');
+		} catch(ex) {
+			devices = [];
+		}
+		return devices.some(function(item) {return item.trim() === navigator.platform;});
+	}
+
+	function addTouchScrollClassToBody() {
+		if ('ontouchstart' in window ||
+				(navigator.maxTouchPoints !== 'undefined' && navigator.maxTouchPoints > 0) ||
+				(navigator.msMaxTouchPoints !== 'undefined' && navigator.msMaxTouchPoints > 0)) {
+			if (typeof document.body != undefined) {
+				document.body.classList.add('touch_scroll');
+			}
+		}
+	}
+  </script><script>window.NOW = window.NOW || {};
+        NOW.amb_themed_login = true;</script><script type="text/javascript" src="/scripts/js_includes_amb.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><!--googleoff: all--><noscript>This site requires JavaScript to be enabled</noscript> <!--googleon: all--><script type="text/javascript" src="/scripts/app.guided_tours/js_guided_tours_includes.jsx?v=06-25-2025_1836"></script><script>NOW.xperf.scriptEnd = NOW.xperf.now();
+				NOW.xperf.parseEnd = NOW.xperf.now();</script></head><body class="section_header_body_no_scroll                -polaris " data-formName="sys_form_template"><span class="sr-only"><div id="html_page_aria_live_polite" role="region" aria-relevant="additions text" aria-atomic="false" aria-live="polite"></div><div id="html_page_aria_live_assertive" role="region" aria-relevant="additions text" aria-atomic="false" aria-live="assertive"></div></span><script data-comment="start timer - dirty form onmousedown">
+		NOW.xperf.formBegin = NOW.xperf.now();
+		var gFormSW = new StopWatch();
+
+		var g_formDirtyFocus = false;
+		// remove potential closure leak, see exhibit 7 in the following article:
+		// http://www.codeproject.com/Articles/12231/Memory-Leakage-in-Internet-Explorer-revisited
+		document.body.onmousedown = dirtyFormFocus;
+
+		function dirtyFormFocus() {
+			jslog("dirty form focus");
+			g_formDirtyFocus = true;
+			document.body.onmousedown = null;
+		}
+
+		var g_tabs_preference = true;
+		var g_tabs_print = false;
+		var g_tabs_reference = 'u_test_table'; // name for state maintenance (which tab we are on for a form)
+		
+		window.NOW['personalize_u_test_table_default'] = 'false';
+
+		var g_related_list_timing = "default";</script><script>window.NOW = window.NOW || {};
+        NOW.amb_themed_login = true;</script><script>window.NOW = window.NOW || {};
+        NOW.amb_themed_login = true;</script><script data-description="NOW glide web analytics siteid and url">window.snWebaConfig = window.snWebaConfig || {};
+		// glide web analytics config
+		window.snWebaConfig.siteId = "0";
+		window.snWebaConfig.trackerURL = "";
+		window.snWebaConfig.webaScriptPath = "/scripts/piwik-3.1.1/thirdparty/piwik.min.js";
+		window.snWebaConfig.ambClient = (window.g_ambClient) ? window.g_ambClient : ((window.amb)? window.amb.getClient(): "");
+		window.snWebaConfig.subscribed = false;</script><script data-description="NOW vars set by properties, custom events, g_* clobals">window.CustomEvent = window.CustomEvent || {};
+	window.CustomEvent.fire = window.CustomEvent.fire || function() {};
+	window.NOW = window.NOW || {};
+	window.NOW.ng_cache_defeat = false;
+	window.NOW.ui_policy = {};
+	window.NOW.ui_policy.debug = false;
+	window.NOW.ui_policy.debug = false;
+	window.NOW.initiallyLoggedIn = true;
+	window.NOW.externalAuthentication = false;
+	window.NOW.ac_wait_time = parseInt(250);
+	window.NOW.compact = false;
+	window.NOW.listFormModal = false;
+	window.NOW.listTableWrap = true;
+	window.NOW.maximumListCharacters = 40;
+	window.NOW.user_email = 'admin@example.com';
+	window.NOW.user_roles = 'platform_ml_create,taxonomy_admin,import_transformer,ais_admin,catalog_builder_editor,nlu_admin,catalog_template_editor,catalog,catalog_lookup_admin,sn_ex_emp_fd.portal_stats_manager,admin,ml_admin,platform_ml_read,platform_ml_write,chat_admin,search_application_admin,search_relevancy_model_admin,import_set_loader,catalog_admin,sn_ace.ace_user,import_scheduler,pa_viewer,nlu_editor,sn_templated_snip.template_snippet_admin,sn_hr_sp.esc_admin,nlu_user,personalize_dictionary,live_feed_admin,sn_templated_snip.template_snippet_writer,evam_admin,sn_hr_sp.admin,ml_labeler,sp_admin,announcement_admin,pa_data_collector,import_admin,sn_templated_snip.template_snippet_reader,teamdev_code_reviewer,agent_security_admin,user_criteria_admin,image_admin,sn_employee.admin,sn_nlu_workbench.nlu_feedback_admin';
+
+	var g_tz_offset = -25200000;
+	var g_first_day_of_week = parseInt(1, 10);
+	var g_date_picker_first_day_of_week = parseInt(0, 10);
+	var g_ck = '56e08fb4c3726a10ed4bd50d05013132316204fa9be517cd64a87c3f49d2b880b7ff8e21';
+	var g_searchWaitTime = 100;
+	var g_loadTime = new Date();
+	window.NOW.clientTiming = {
+		serverTime: parseInt("649") + parseInt("0"),
+		transactionId: '8dd1c7f8c3f66a10ed4bd50d05013164',
+		tableName: 'u_test_table',
+		formName: '',
+		viewId: 'Default view',
+		pageInitTime: g_loadTime
+	};</script><script data-description="NOW session, user_name, etc">window.NOW = window.NOW || {};
+		// record watch / presence
+		window.NOW.session_id = 'D2E08FB4C3726A10ED4BD50D05013132';
+		window.NOW.user_name = 'admin';
+		window.NOW.user_id = '6816f79cc0a8016401c5a33be04be441';
+		window.NOW.user_display_name = 'System Administrator';
+		window.NOW.user_initials = 'SA';
+		window.NOW.user_avatar = 'a5d3c898c3222010ae17dd981840dd8b.iix?t=small';
+		window.NOW.presence_interval = 60;
+		window.NOW.record_presence_interval = 20;
+		window.NOW.ambConnected = false;</script><script>window.NOW = window.NOW || {};
+					NOW.streamLinkTarget = '';
+					NOW.stream_poll_interval = parseInt(120);
+					NOW.targetTable = 'u_test_table'
+					NOW.sysId = '1dd143f8c37a6a10ed4bd50d05013119';</script><div id="u_test_table.form_header" class="section_header_div_no_scroll form_title" data-form-title="Create Created  | test_table" sn-atf-blacklist="IS_GFORM"><input id="section_form_id" value="u_test_table.do" type="hidden"></input><span class="tabs2_section tabs2_section_0 tabs2_section0 " data-header-only="true" tab_caption="test_table" tab_caption_raw="" id="section_tab.e46089cfc3662210ed4bd50d0501318e.header" data-section-id="e46089cfc3662210ed4bd50d0501318e"><span id="section-e46089cfc3662210ed4bd50d0501318e.header" data-header-only="true" class="section "><nav class="navbar navbar-default section_zero " data-type="section_head" data-id="e46089cfc3662210ed4bd50d0501318e" role="navigation"><div class="container-fluid"><div class="navbar-header"><input type="HIDDEN" id="sysverb_back"></input><script>addLoadEvent(function() {
+											// The polaris app-shell has custom dirty form behavior that observes "back.gsftSubmit"
+											// and then fires "polaris:legacy.formSubmit" when it's done.
+											// Outside of the app-shell we just call gsftSubmitBack like normal.
+											if (!window.isPolaris()) { 
+												CustomEvent.observe("back.gsftSubmit", gsftSubmitBack);
+												return;
+											}
+
+											// DEF0461744: If we are in a custom iframe in the polaris app-shell,
+											// add this frame to the app-shell's list of frames so CustomEvent.fireAll can find it.
+											if (parent == top && Array.isArray(parent.__frames) && parent.__frames.indexOf(window) == -1)
+												parent.__frames.push(window);
+												
+											CustomEvent.observe("polaris:legacy.formSubmit", gsftSubmitBack);
+											CustomEvent.observe("polaris:legacy.formModified", function(modified) {
+												window.g_form.modified = modified;
+											});
+										});</script><button title="Additional actions" role="button" aria-label="additional actions" aria-haspopup="true" aria-expanded="false" class="btn btn-icon icon-menu navbar-btn additional-actions-context-menu-button" onclick="contextShow(event, '1', 200, grabOffsetTop(this) + 20, grabOffsetLeft(this) + 24);event.cancelBubble=true;Event.stop(event);"></button><script>function getFavoriteURL() {
+									var pathName = window.location.pathname.startsWith('/') ? window.location.pathname.substr(1) : window.location.pathname;
+									return pathName + window.location.search;
+								}</script><h1 class="form_header navbar-title navbar-title-twoline" draggable="true" ondragstart="event.dataTransfer.setData('text', Object.toJSON({ icon: 'form', url: getFavoriteURL(), title: g_form.getTitle(), table: g_form.getTableName() }))"><input type="HIDDEN" id="sysverb_view_change" name="sysverb_view_change"></input><div><div class="navbar-title-caption navbar-title-new-record">test_table</div><div class="navbar-title-display-value navbar-title-new-record">New record</div></div></h1></div><div class="navbar-right"><span id="section_head_right.e46089cfc3662210ed4bd50d0501318e" style="display: ;"><span class="sn-form-presence-container"><form-presence></form-presence>
+	<script type="text/ng-template" id="angular.do?sysparm_type=get_partial&amp;name=ng_form_presence.xml">
+		<span ng-if="viewingUsers"><sn-avatar-popover primary="viewingUsers[0]" ng-if="viewingUsers.length == 1" show-presence="true"></sn-avatar-popover><div ng-show="viewingUsers.length &gt; 1" class="form-presence-users-multiple" onclick="setMaxHeight()"><a aria-haspopup="true" aria-label="{{viewingUsers.length}} users viewing this record" role="button" class="avatar avatar-md sn-popover-presence sn-popover-basic" href="javascript:void(0);" title="Viewing this record" ng-bind="viewingUsers.length" data-placement="bottom" data-toggle="popover" data-target="#form_presence_users"></a><div id="form_presence_users" style="min-height: 20px"><ul><li ng-repeat="user in viewingUsers"><sn-avatar-popover primary="user" show-presence="true"></sn-avatar-popover><span class="user-name">{{ user.displayName }}</span></li></ul></div></div><now-message key="{name} has set this field to {value}" value="{name} has set this field to {value}"></now-message><now-message key="{name} has cleared the value of this field" value="{name} has cleared the value of this field"></now-message><now-message key="{name} has modified this field value" value="{name} has modified this field value"></now-message></span><script>function setMaxHeight(){
+			if(document.getElementById("form_presence_users"))
+				document.getElementById("form_presence_users").style.maxHeight = (window.innerHeight - 150) + "px";
+		}</script></script>
+	<script type="text/ng-template" id="angular.do?sysparm_type=get_partial&amp;name=sn_avatar.xml">
+		
+
+
+
+	<div class="avatar-container" ng-class="avatarType()" title="{{ avatartooltip() }}" tabindex="-1">
+
+		<div class="avatar soloAvatar top" ng-if="(users.length &gt; 1 &amp;&amp; !groupAvatar)" context-menu="contextOptions">
+			<div class="sub-avatar" ng-style="getBackgroundStyle(users[1])">
+				<span ng-if="!users[1].avatar">{{ users[1].initials }}</span></div></div>
+
+		<div class="avatar soloAvatar bottom" context-menu="contextOptions">
+			<div class="sub-avatar" ng-style="getBackgroundStyle(users[0] || primary)">
+				<span ng-if="(!users[0].avatar &amp;&amp; !groupAvatar)">{{ users[0].initials }}</span></div></div>
+
+		<div class="avatar soloAvatar top" ng-if="users.length &gt; 2 &amp;&amp; !groupAvatar" context-menu="contextOptions">
+			<div class="sub-avatar" ng-style="getBackgroundStyle(users[2])">
+				<span ng-if="!users[2].avatar">{{ users[2].initials }}</span></div></div>
+
+		<div class="avatar soloAvatar top" ng-if="users.length &gt; 3 &amp;&amp; !groupAvatar" context-menu="contextOptions">
+			<div class="sub-avatar" ng-style="getBackgroundStyle(users[3])">
+				<span ng-if="!users[3].avatar">{{ users[3].initials }}</span></div></div>
+
+		<span class="inner-details" ng-transclude=""></span>
+		<sn-presence ng-if="::presenceEnabled" user="(users[0].userID || users[0].document)" on-presence-change="onPresenceChange(status)"></sn-presence></div></script>
+	<script type="text/ng-template" id="angular.do?sysparm_type=get_partial&amp;name=sn_avatar_button.xml">
+		<a class="sn-popover-complex" role="presentation" ng-style="{'cursor': popoverCursor}" style="background-color: transparent"><div class="avatar soloAvatar top" ng-if="users.length &gt; 1 &amp;&amp; !groupAvatar"><div aria-label="{{ users[0].displayName }} {{ users[0].status }}" user-avatar-id="{{users[0].userID}}" ng-click="loadFullProfile(); togglePopover($event); stopPropCheck($event);" role="button" tabindex="0" title="{{ avatartooltip() }}" aria-haspopup="true" class="sub-avatar" ng-style="getBackgroundStyle(users[1])"><span ng-if="!users[1].avatar">{{ users[1].initials }}</span></div></div><div class="avatar soloAvatar bottom"><div aria-label="{{ users[0].displayName }} {{ users[0].status }}" user-avatar-id="{{users[0].userID}}" ng-click="loadFullProfile(); togglePopover($event); stopPropCheck($event);" role="button" tabindex="0" title="{{ avatartooltip() }}" aria-haspopup="true" class="sub-avatar" ng-style="getBackgroundStyle(users[0] || primary)"><span ng-if="!users[0].avatar &amp;&amp; !groupAvatar">{{ users[0].initials }}</span></div></div><div class="avatar soloAvatar top" ng-if="users.length &gt; 2 &amp;&amp; !groupAvatar"><div aria-label="{{ users[0].displayName }} {{ users[0].status }}" user-avatar-id="{{users[0].userID}}" ng-click="loadFullProfile(); togglePopover($event); stopPropCheck($event);" role="button" tabindex="0" title="{{ avatartooltip() }}" aria-haspopup="true" class="sub-avatar" ng-style="getBackgroundStyle(users[2])"><span ng-if="!users[2].avatar">{{ users[2].initials }}</span></div></div><div class="avatar soloAvatar top" ng-if="users.length &gt; 3 &amp;&amp; !groupAvatar"><div aria-label="{{ users[0].displayName }} {{ users[0].status }}" user-avatar-id="{{users[0].userID}}" ng-click="loadFullProfile(); togglePopover($event); stopPropCheck($event);" role="button" tabindex="0" title="{{ avatartooltip() }}" aria-haspopup="true" class="sub-avatar" ng-style="getBackgroundStyle(users[3])"><span ng-if="!users[3].avatar">{{ users[3].initials }}</span></div></div><sn-presence ng-if="::presenceEnabled" user="users[0].userID || users[0].document" display-name="users[0].displayName"></sn-presence></a></script>
+	<script type="text/ng-template" id="angular.do?sysparm_type=get_partial&amp;name=sn_avatar_popover.xml">
+		<span class="avatar-container" ng-class="avatarType()"><sn-complex-popover ng-if="!noPopover()" template="sn_avatar_content.xml" button-template="sn_avatar_button.xml"></sn-complex-popover><sn-complex-popover ng-if="noPopover()" button-template="sn_avatar_button.xml"></sn-complex-popover></span></script></span><button id="header_add_attachment" onclick="saveAttachment('u_test_table', '1dd143f8c37a6a10ed4bd50d05013119');" title="Manage Attachments" data-now-ux-metrics-event="Manage Attachments" aria-label="Manage Attachments" class="btn btn-icon icon-paperclip navbar-btn" data-omit-aria-describedby="true"></button><button class="btn btn-icon icon-configuration navbar-btn sn-tooltip-basic" title="Personalize Form" data-target="#formSettingsContainer" id="togglePersonalizeForm" data-now-ux-metrics-event="Personalize Form" aria-haspopup="true" aria-controls="formSettingsContainer" aria-expanded="false" style="display: inline-block !important" data-ref="u_test_table"><span class="sr-only">Personalize Form</span></button><button class="btn btn-icon icon-ellipsis navbar-btn sn-popover-basic" type="button" title="More options" id="toggleMoreOptions" style="display: inline-block !important" data-target="#moreOptionsContainer" data-now-ux-metrics-event="Click More Options" data-toggle="popover" data-placement="bottom" aria-haspopup="true" aria-controls="moreOptionsContainer" aria-expanded="false" data-ref="u_test_table"><span class="sr-only">More options</span></button><div id="moreOptionsContainer" class="popover-item-list" style="display:none"><div class="popover-body"><div class="row"><button id="template-toggle-button" onclick="CustomEvent.fire('templateToggle')" aria-label="Show/Hide Template Bar" aria-controls="template-bar-aria-container" data-dismiss="popover" title="Show/Hide Template Bar" class="icon-blog">Show/Hide Template Bar</button></div><div class="row"><span class="sn-tooltip-basic annotation-tooltip" title="Show/Hide annotations" data-dismiss="popover" data-title-enabled="Show/Hide annotations" data-title-disabled="No annotations available"><button id="header_toggle_annotations" class="icon-help">Show/Hide annotations</button></span></div></div></div><span class="ui_action_container_primary"><span class="navbar_ui_actions"><button class="form_action_button header  action_context btn btn-default" style="white-space: nowrap" type="submit" value="sysverb_insert" onClick="return gsftSubmit(this);" id="sysverb_insert" data-action-name="sysverb_insert" data-now-ux-metrics-event="Click Form Action" gsft_id="42da42d00a0a0b340066377beb6dd099" name="not_important">Submit</button></span></span><button onclick="window.parent.closeFormModal()" id="close_modal" class="btn btn-icon icon-cross navbar-btn" style="display: none;"><span class="sr-only">Close Form</span></button><script>if (window.parent && window.parent.closeFormModal)
+										document.getElementById('close_modal').style.display = 'inline-block';</script></span><span></span></div></div><span class="ui_action_container_overflow"></span></nav><script>if('false' == 'true')
+		$$('nav.navbar')[0].setStyle({marginBottom: '0px'});</script></span></span></div><script data-description="MessagesTag">(function() {
+ var messages = new GwtMessage();
+messages.set('Mandatory - preloaded with saved data');
+messages.set('Field value has changed since last update');
+messages.set('Mandatory - must be populated before Submit');
+messages.set('Read only - cannot be modified');
+messages.set('Add Tag...','Add tag...');
+messages.set('Edit tag audience');
+messages.set('{0} ({1})');
+messages.set('({0} of {1})');
+messages.set('Changes have been made, continuing will discard the changes. Click \'OK\' to discard changes.');
+})()</script><div id="u_test_table.form_scroll" class="section_header_content_no_scroll touch_scroll   overflow_x_hidden-hotfix" data-position-below-header="true" sn-atf-blacklist="IS_GFORM"><form autocomplete="off" method="POST" action="u_test_table.do" class="form_body form-horizontal" name="u_test_table.do" accept-charset="UTF-8" id="u_test_table.do" style="padding-bottom: 10px;" onkeypress="return enterSubmitsForm(event,'false')"><input name="sysparm_ck" id="sysparm_ck" type="hidden" value="56e08fb4c3726a10ed4bd50d05013132316204fa9be517cd64a87c3f49d2b880b7ff8e21"></input><input type="HIDDEN" id="sys_base_uri" name="sys_base_uri" value="https://dev315171.service-now.com/"></input><input type="HIDDEN" id="sys_target" name="sys_target" value="u_test_table"></input><input type="HIDDEN" name="sys_uniqueName" value="sys_id"></input><input type="HIDDEN" id="sys_uniqueValue" name="sys_uniqueValue" value="1dd143f8c37a6a10ed4bd50d05013119"></input><input type="HIDDEN" id="sys_displayValue" name="sys_displayValue" value="Created "></input><input type="HIDDEN" id="sys_titleValue" name="sys_titleValue" value=""></input><input type="HIDDEN" id="onLoad_sys_updated_on" name="onLoad_sys_updated_on" value=""></input><input type="HIDDEN" id="sys_row" name="sys_row" value="-1"></input><input type="HIDDEN" id="sys_modCount" name="sys_modCount" value=""></input><input type="HIDDEN" id="sys_action" name="sys_action" value="none"></input><input type="HIDDEN" name="sysparm_collection"></input><input type="HIDDEN" name="sysparm_collectionID"></input><input type="HIDDEN" name="sysparm_collection_key"></input><input type="HIDDEN" name="sysparm_collection_related_field"></input><input type="HIDDEN" name="sysparm_collection_relationship"></input><input type="HIDDEN" name="sysparm_redirect_url" id="sysparm_redirect_url"></input><input type="HIDDEN" name="sysparm_goto_url" id="sysparm_goto_url"></input><input type="HIDDEN" id="isFormPage" name="isFormPage" value="true"></input><input type="HIDDEN" name="sysparm_referring_url" id="sysparm_referring_url"></input><input type="HIDDEN" name="sysparm_view" id="sysparm_view" value=""></input><input type="HIDDEN" name="sysparm_changeset" id="sysparm_changeset"></input><input type="HIDDEN" name="sysparm_template_editable" id="sysparm_template_editable"></input><input type="HIDDEN" name="sysparm_record_row" id="sysparm_record_row"></input><input type="HIDDEN" name="sysparm_record_list" id="sysparm_record_list"></input><input type="HIDDEN" name="sysparm_record_rows" id="sysparm_record_rows"></input><input type="HIDDEN" name="sysparm_record_target"></input><input type="HIDDEN" name="sysparm_modify_check" value="true"></input><input type="HIDDEN" name="sysparm_action_template"></input><input type="HIDDEN" name="sysparm_link_collection"></input><input type="HIDDEN" id="sysparm_pop_onLoad" name="sysparm_pop_onLoad"></input><input type="HIDDEN" id="sysparm_nameofstack" name="sysparm_nameofstack"></input><input type="HIDDEN" id="sysparm_transaction_scope" name="sysparm_transaction_scope"></input><input type="HIDDEN" id="sysparm_transaction_update_set" name="sysparm_transaction_update_set"></input><input type="HIDDEN" id="sysparm_record_scope" name="sysparm_record_scope"></input><input type="HIDDEN" id="ni.scroll_to_messsage_field" value="true"></input><input type="HIDDEN" id="ni.escape_form_message" value="false"></input><input type="HIDDEN" id="ni.escape_gwindow_message" value="false"></input><input type="HIDDEN" name="sysparm_ck" value="56e08fb4c3726a10ed4bd50d05013132316204fa9be517cd64a87c3f49d2b880b7ff8e21"></input><span class="tabs2_section tabs2_section_0 tabs2_section0 " data-header-only="false" tab_caption="test_table" tab_caption_raw="" id="section_tab.e46089cfc3662210ed4bd50d0501318e" data-section-id="e46089cfc3662210ed4bd50d0501318e"><span id="section-e46089cfc3662210ed4bd50d0501318e" data-header-only="false" class="section "><div id="u_test_table.section_header_spacer"></div><script type="text/javascript" data-description="attachment globals population">if (!window.NOW) window.NOW = {};
+			window.NOW.g_forceDownloadAttachments = true;</script><div id="header_attachment"><div id="header_attachment_size_checker"><ul id="header_attachment_list" class="allow-resize-height inline-block-items with-plus-more with-ellipsis" data-max-filename-length="100" data-total-files="0"><li class="manage_list"><a href="#" id="header_attachment_list_label" style="visibility:hidden; display:none;" class="attachment" onclick="javascript:saveAttachment('u_test_table', '1dd143f8c37a6a10ed4bd50d05013119');; return false;">Manage Attachments (<span id="attachmentNumber_" class="attachmentNumber_"></span>):</a></li></ul><div id="attachment_upload_progress"></div></div><span class="plus_more hidden"><a role="button" click-on-space="true" aria-haspopup="dialog" aria-label="+-3 - View All Attachments" title="View All Attachments" tabindex="0" onclick="javascript:saveAttachment('u_test_table', '1dd143f8c37a6a10ed4bd50d05013119');; return false;"><span class="badge">+ -3</span></a></span></div><div id="header_attachment_line" style="display:none"></div><script>addLoadEvent(function() {
+
+				if (typeof AttachmentUploader !== "undefined") {
+					AttachmentUploader.addDropZone(document.body, "1024",
+					"true", "true", "true", "");
+				}
+			});</script><div id="output_messages" class="outputmsg_container outputmsg_hide"><button type="button" aria-label="Close Messages" id="close-messages-btn" class="btn btn-icon close icon-cross" onclick="GlideUI.get().onCloseMessagesButtonClick(this); return false;"></button><div class="outputmsg_div" aria-live="polite" role="region" data-server-messages="false"></div></div><script>addRenderEvent(function() {CustomEvent.fire('glide_optics_inspect_update_watchfield', '');});
+
+			var accessibilityEnabled = Boolean(false);
+			var hasMessages = false;
+			if (accessibilityEnabled && hasMessages) {
+				$j(function() {
+					$j('#output_messages .btn.btn-icon.close').focus();
+				});
+			}</script><div id="e46089cfc3662210ed4bd50d0501318e" glide="true" class="section-content with-overflow" role="region" aria-label="test_table form section"><div class="row"><div class="col-xs-12"><div id="element.u_test_table.u_url_field" class="form-group "><div class="" oncontextmenu="return elementAction(this, event)" choice="0" type="url" id="label.u_test_table.u_url_field"><label onclick="return labelClicked(this);" for="u_test_table.u_url_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_url_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">URL field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls" ng-non-bindable="true"><input type="hidden" id="sys_original.u_test_table.u_url_field" name="sys_original.u_test_table.u_url_field" value=""></input><a id="u_test_table.u_url_field_link" class="web web-inline form-control-static" target="_blank" aria-hidden="true" tabindex="-1" name="u_test_table.u_url_field_link" href=""></a><input id="u_test_table.u_url_field" name="u_test_table.u_url_field" onChange="onChange('u_test_table.u_url_field');telemetryForRecordUpdate('u_url_field');" maxlength="1024" value="" style="; display: none;" class="form-control" spellcheck="false" autocomplete="off"></input></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons" id="u_test_table.u_url_field-addons"></div></div><script>addRenderEvent( function() {
+			var ref = 'u_test_table.u_url_field';
+			var urlHandler = new GlideURLElement(ref, "Lock URL field", "Edit URL field");
+			g_form.registerHandler(ref, urlHandler);
+		});</script><div id="element.u_test_table.u_decimal_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="decimal" id="label.u_test_table.u_decimal_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_decimal_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_decimal_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Decimal field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_decimal_field" name="sys_original.u_test_table.u_decimal_field" value=""></input></div><input class="form-control decimal " id="u_test_table.u_decimal_field" name="u_test_table.u_decimal_field" maxlength="14" value="" onchange="this.value=formatNumber(this.value);onChange('u_test_table.u_decimal_field');telemetryForRecordUpdate('u_decimal_field');" style="; "></input></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_string_utf8_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="string_full_utf8" id="label.u_test_table.u_string_utf8_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_string_utf8_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_string_utf8_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">String UTF8 field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_string_utf8_field" name="sys_original.u_test_table.u_string_utf8_field" value=""></input></div><input type="text" data-type="string_full_utf8" id="u_test_table.u_string_utf8_field" name="u_test_table.u_string_utf8_field" aria-required="false" aria-labelledby="label.u_test_table.u_string_utf8_field" onChange="onChange('u_test_table.u_string_utf8_field');telemetryForRecordUpdate('u_string_utf8_field');" maxlength="255" value="" style="; " autocomplete="off" ng-non-bindable="" class="form-control " spellcheck="false"></input><script>addRenderEvent(function() {
+			try {
+				var sysId = '1dd143f8c37a6a10ed4bd50d05013119';
+				var table = 'u_test_table';
+
+				var ref = 'u_test_table.u_string_utf8_field';
+
+				var fieldName = '';
+				if (ref && ref.split('.').length > 1) {
+					fieldName = ref.split(".")[1];
+				}
+
+				renderNACMFieldLevel(table, sysId, fieldName);
+			} catch (e) {
+				jslog("Exception while evaluating NACM configuration in text area: " + e);
+			}
+		});</script></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_boolean_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="boolean" id="label.u_test_table.u_boolean_field" noWrap="true"><label onclick="return labelClicked(this);" for="ni.u_test_table.u_boolean_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_boolean_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Boolean field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_boolean_field" name="sys_original.u_test_table.u_boolean_field" value="false"></input></div><span class="input-group-checkbox"><input type="checkbox" class="checkbox" id="ni.u_test_table.u_boolean_field" name="ni.u_test_table.u_boolean_field" aria-labelledby="label.ni.u_test_table.u_boolean_field" value="true" data-type="boolean" aria-required="false" data-ref="u_test_table.u_boolean_field"></input><label for="ni.u_test_table.u_boolean_field" id="label.ni.u_test_table.u_boolean_field" dir="ltr" class=" checkbox-label" aria-hidden="true" aria-label="Boolean field"></label></span><input type="hidden" class="" id="u_test_table.u_boolean_field" name="u_test_table.u_boolean_field" value="false" gsftlocked="false"></input></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_long_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="longint" id="label.u_test_table.u_long_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_long_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_long_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Long field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_long_field" name="sys_original.u_test_table.u_long_field" value=""></input></div><input type="text" data-type="longint" id="u_test_table.u_long_field" name="u_test_table.u_long_field" aria-required="false" aria-labelledby="label.u_test_table.u_long_field" onChange="onChange('u_test_table.u_long_field');telemetryForRecordUpdate('u_long_field');" maxlength="255" value="" style="; " autocomplete="off" ng-non-bindable="" class="form-control " spellcheck="false"></input><script>addRenderEvent(function() {
+			try {
+				var sysId = '1dd143f8c37a6a10ed4bd50d05013119';
+				var table = 'u_test_table';
+
+				var ref = 'u_test_table.u_long_field';
+
+				var fieldName = '';
+				if (ref && ref.split('.').length > 1) {
+					fieldName = ref.split(".")[1];
+				}
+
+				renderNACMFieldLevel(table, sysId, fieldName);
+			} catch (e) {
+				jslog("Exception while evaluating NACM configuration in text area: " + e);
+			}
+		});</script></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_date_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="date" id="label.u_test_table.u_date_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_date_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_date_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Date field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_date_field" name="sys_original.u_test_table.u_date_field" value=""></input></div><span class="input-group element"><input type="text" class="form-control text-align-right-ltr element_reference_input" id="u_test_table.u_date_field" data-type="glide_element_date" data-ref="u_test_table.u_date_field" name="u_test_table.u_date_field" aria-required="false" value="" style="; "></input><span class="input-group-btn"><a class="btn-ref btn btn-default" name="u_test_table.u_date_field.ui_policy_sensitive" id="u_test_table.u_date_field.ui_policy_sensitive" tabindex="-1" data-type="element_date" data-ref="u_test_table.u_date_field" data-now-ux-metrics-event="Select Date and Time" title="Select Date" role="button" href="javascript:void(0)" data-date_time_format="yyyy-MM-dd"><span class="icon icon-calendar" aria-hidden="true"></span><span class="sr-only">Select Date</span></a></span></span></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_string_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="string" id="label.u_test_table.u_string_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_string_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_string_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">String field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_string_field" name="sys_original.u_test_table.u_string_field" value=""></input></div><input type="text" data-type="string" id="u_test_table.u_string_field" name="u_test_table.u_string_field" aria-required="false" aria-labelledby="label.u_test_table.u_string_field" onChange="onChange('u_test_table.u_string_field');telemetryForRecordUpdate('u_string_field');" maxlength="40" value="" style="; " autocomplete="off" ng-non-bindable="" class="form-control " spellcheck="false"></input><script>addRenderEvent(function() {
+			try {
+				var sysId = '1dd143f8c37a6a10ed4bd50d05013119';
+				var table = 'u_test_table';
+
+				var ref = 'u_test_table.u_string_field';
+
+				var fieldName = '';
+				if (ref && ref.split('.').length > 1) {
+					fieldName = ref.split(".")[1];
+				}
+
+				renderNACMFieldLevel(table, sysId, fieldName);
+			} catch (e) {
+				jslog("Exception while evaluating NACM configuration in text area: " + e);
+			}
+		});</script></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_integer_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="integer" id="label.u_test_table.u_integer_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_integer_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_integer_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Integer field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_integer_field" name="sys_original.u_test_table.u_integer_field" value=""></input></div><input class="form-control decimal " id="u_test_table.u_integer_field" name="u_test_table.u_integer_field" maxlength="14" value="" onchange="this.value=formatNumber(this.value);onChange('u_test_table.u_integer_field');telemetryForRecordUpdate('u_integer_field');" style="; "></input></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_phone_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="phone_number_e164" id="label.u_test_table.u_phone_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_phone_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_phone_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Phone field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_phone_field" name="sys_original.u_test_table.u_phone_field" value=""></input></div><input name="ni.dependent." id="ni.dependent." type="hidden" onDependentChange="g_phoneNumberDependentChange('u_test_table.u_phone_field','u_test_table.')"></input><select data-type="phone_number_e164" element_ref="u_test_table.u_phone_field" id="country_u_test_table.u_phone_field" name="country_u_test_table.u_phone_field" style="margin-right: 5px;; " onchange="onChangePhoneNumberE164('select',this);" value="" class="form-control" aria-labelledby="label.u_test_table.u_phone_field"><option value="61,0,false">Australia</option><option value="55,0,false">Brazil</option><option value="86,0,false">China</option><option value="57,0,false">Colombia</option><option value="420,,false">Czech Republic</option><option value="33,0,false">France</option><option value="49,0,false">Germany</option><option value="353,0,false">Ireland</option><option value="39,,false">Italy</option><option value="81,0,false">Japan</option><option value="52,01,false">Mexico</option><option value="31,0,false">Netherlands</option><option value="1,1,false">North America</option><option value="27,0,false">South Africa</option><option value="41,0,false">Switzerland</option><option value="44,0,false">United Kingdom</option><option value="" selected="selected">Other / Unknown</option></select><input data-type="phone_number_e164" element_ref="u_test_table.u_phone_field" data-allow-national="true" data-national="false" data-strict="true" data-select="true" data-gdc="" data-ldc="" data-local-global="" data-localuser="false" data-user-country="" data-selected-cache="," data-valid="true" data-country-text="false" data-country-text-national="false" autocomplete="off" style="margin-right: 5px; " id="disp_u_test_table.u_phone_field" name="disp_u_test_table.u_phone_field" class=" form-control form-control phone-number ltr" onchange="onChangePhoneNumberE164('input',this); onChange('u_test_table.u_phone_field');" value="" maxlength="255" aria-labelledby="label.u_test_table.u_phone_field" dir="ltr"></input><input data-type="phone_number_e164" id="u_test_table.u_phone_field" name="u_test_table.u_phone_field" element_ref="u_test_table.u_phone_field" type="hidden" value=""></input><script language="javascript">addRenderEvent(function() {
+				g_phoneNumberDependentChange('u_test_table.u_phone_field','u_test_table.');
+				var hinput = gel('disp_u_test_table.u_phone_field');
+				var form = findParentByTag(hinput, "FORM");
+				addOnSubmitEvent(form, 
+					function() {
+						var hinput = gel('disp_u_test_table.u_phone_field');
+						var pinput = gel('u_test_table.u_phone_field');
+
+						// Not sure if this should be before or after strict check
+						if ((hinput.getAttribute("data-allow-national") == 'false') && pinput.value.substr(0,1) != "+") {
+							alert (getMessage("Invalid phone number entered.\nPhone number must start with '+'"));
+							hinput.focus();
+							return false;
+						}
+
+						if (hinput.getAttribute("data-strict") == 'false')
+							return true;
+	
+						if (hinput.getAttribute("data-valid") == 'true')
+							return true;
+					
+						alert (getMessage("Invalid phone number"));
+						hinput.focus();
+						return false;
+					}
+				);
+			});</script></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div><div id="element.u_test_table.u_color_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="color" id="label.u_test_table.u_color_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_color_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_color_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Color field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_color_field" name="sys_original.u_test_table.u_color_field" value=""></input></div><input id="u_test_table.u_color_field" type="text" aria-required="false" class="form-control" name="u_test_table.u_color_field" data-ref="u_test_table.u_color_field" data-type="color_swatch" value="" style="; " onChange="onChange('u_test_table.u_color_field');telemetryForRecordUpdate('u_color_field');"></input></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"><span id="color_swatch.u_test_table.u_color_field" class="color-swatch-preview btn btn-icon" style=""></span></div></div><div id="element.u_test_table.u_float_field" class="form-group " style=""><div class="" data-type="label" choice="0" type="float" id="label.u_test_table.u_float_field" noWrap="true"><label onclick="return labelClicked(this);" for="u_test_table.u_float_field" dir="ltr" class=" col-xs-12 col-md-1_5 col-lg-2 control-label"><span id="status.u_test_table.u_float_field" aria-label="" role="note" data-dynamic-title="" mandatory="false" oclass="" class=" "></span><span title="" class="label-text" data-html="false">Float field</span></label></div><div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls"><div ng-non-bindable="" class="hidden"><input type="hidden" id="sys_original.u_test_table.u_float_field" name="sys_original.u_test_table.u_float_field" value=""></input></div><input class="form-control decimal " id="u_test_table.u_float_field" name="u_test_table.u_float_field" maxlength="14" value="" onchange="this.value=formatNumber(this.value);onChange('u_test_table.u_float_field');telemetryForRecordUpdate('u_float_field');" style="; "></input></div><div class="col-xs-2 col-md-1_5 col-lg-2 form-field-addons"></div></div></div></div></div></span></span><div class="form_action_button_container"><button class="form_action_button  action_context btn btn-default" style="white-space: nowrap" type="submit" value="sysverb_insert" onClick="return gsftSubmit(this);" id="sysverb_insert_bottom" data-action-name="sysverb_insert" data-now-ux-metrics-event="Click Form Action" gsft_id="42da42d00a0a0b340066377beb6dd099" name="not_important">Submit</button></div><input type="HIDDEN" id="sysparm_encoded_record" name="sysparm_encoded_record" value="77ee77ef77eSODQzYzNiMzJjMzIyMjIxMGVkNGJkNTBkMDUwMTMxYTDvt6zvt5Qx77es77etYUtQeDRXZUROb3AxSUU4bWJPdlhqUT09QzNVOHc3RC11amdiczFjVVVjRzlDYjd6VWVqQUVqdnpZbk9xeC1BckNqcmdDZUtwNUloLWM3MnFQV1ZiemhocVRnbl9lVzBlbHR5NWllVDZBRUpHeF9RTktwNUVWTGJnYzQ3M1l5ZXJtQzM2WktxcnhYN0YwVW43NnlGRV91NWlNOGxYQ091d0ZiSnk2aTNSSGZQUTlsZlVrQ0F2b1pZTHA5WmUyUG04bi1kd1BCUDRVQWNCa0xYcjNYY3dUcGFCQXBtQkJFbTlHWGxHSDF3a3FERWhpUT0977eu77ev"></input><script data-comment="scratchpad, CSRF, readOnlyFields">var g_scratchpad = JSON.parse('{}');addRenderEvent(function() {
+					g_form.addSecurityReadOnlyFields('');
+				});
+
+				// update CSRF token for form
+				CustomEvent.observe("ck_updated", function(ck) {
+					$j('input[name=sysparm_ck]').val(ck);
+				});</script><SCRIPT data-comment="client script">if (!window['g_form'])
+ window.g_form = new GlideForm('u_test_table',true,true,true,true);
+
+ g_form.setScope('global');
+
+addTopRenderEvent( function() { 
+var thisForm = gel('u_test_table.do');
+g_form.addAttribute('contextual_security');
+addOnSubmitEvent(thisForm, default_on_submit);
+});
+
+
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_long_field', 'longint',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_date_field', 'glide_date',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_string_field', 'string',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_float_field', 'float',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_decimal_field', 'decimal',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_integer_field', 'integer',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_string_utf8_field', 'string_full_utf8',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_boolean_field', 'boolean',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_color_field', 'color',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_url_field', 'url',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);
+ var glideUIElement = newGlideUIElement('u_test_table', 'u_phone_field', 'phone_number_e164',false, 'null',null, 'global', false, false);
+ glideUIElement.isInherited = false;
+ glideUIElement.supportsMapping = false;
+ g_form.addGlideUIElement(glideUIElement);function validate_integer(value) { 
+    if(!containsOnlyChars( g_user_grouping_separator + " 0123456789-", value))
+        return new GwtMessage().getMessage("Invalid integer");
+    return true;
+}
+ g_form.addValidator('integer', validate_integer);function validate_float(value) { 
+    if(!containsOnlyChars(g_user_decimal_separator + g_user_grouping_separator + " 0123456789-", value))
+        return new GwtMessage().getMessage("Invalid number");
+
+    return true;
+}
+ g_form.addValidator('float', validate_float);function validate_decimal(value) { 
+    if(!containsOnlyChars(g_user_decimal_separator + g_user_grouping_separator + " 0123456789-", value))
+        return new GwtMessage().getMessage("Invalid decimal number");
+	
+    return true;
+}
+ g_form.addValidator('decimal', validate_decimal);function validate_glide_date(value) {
+	//Fix for DEF0197478
+
+    // empty fields are still valid dates
+    if (!value)
+        return true;
+    // Default case: we have global g_user_date_format defined
+	if (typeof g_user_date_format !== 'undefined') {
+		//yyyy-MM-dd should be valid if the sys_property is yyyy-MM-dd HH:mm:ss
+		//yyyy-MM-dd HH:mm:ss should be valid if the sys_property is yyyy-MM-dd
+		var newValue = value + ' 00:00:00';
+		var dateFormatOk = (g_user_date_time_format !== 'undefined') ? isDate(value, g_user_date_time_format) : false;
+		return isDate(value, g_user_date_format) ||
+			isDate(newValue, g_user_date_format) ||
+			dateFormatOk ||
+			getMessage("Invalid Date");
+	}
+	   // Edge case: we can always try guessing if g_user_date_format is not defined
+    return parseDate(value) !== null || getMessage("Invalid Date");
+
+}
+ g_form.addValidator('glide_date', validate_glide_date);</SCRIPT><script data-comment="GlideUser initialization">
+		addTopRenderEvent( function() {
+			// user may have already been created
+			if (!window.g_user) {
+				window.g_user = new GlideUser('admin', 
+					  'System',
+					  'Administrator',
+					  'platform_ml_create,taxonomy_admin,import_transformer,ais_admin,catalog_builder_editor,nlu_admin,catalog_template_editor,catalog,catalog_lookup_admin,sn_ex_emp_fd.portal_stats_manager,admin,ml_admin,platform_ml_read,platform_ml_write,chat_admin,search_application_admin,search_relevancy_model_admin,import_set_loader,catalog_admin,sn_ace.ace_user,import_scheduler,pa_viewer,nlu_editor,sn_templated_snip.template_snippet_admin,sn_hr_sp.esc_admin,nlu_user,personalize_dictionary,live_feed_admin,sn_templated_snip.template_snippet_writer,evam_admin,sn_hr_sp.admin,ml_labeler,sp_admin,announcement_admin,pa_data_collector,import_admin,sn_templated_snip.template_snippet_reader,teamdev_code_reviewer,agent_security_admin,user_criteria_admin,image_admin,sn_employee.admin,sn_nlu_workbench.nlu_feedback_admin',
+					  '6816f79cc0a8016401c5a33be04be441',
+					  'a581ab703710200044e0bfc8bcbe5de8');
+				window.g_user.setRoles('platform_ml_create,taxonomy_admin,import_transformer,ais_admin,catalog_builder_editor,nlu_admin,catalog_template_editor,catalog,catalog_lookup_admin,sn_ex_emp_fd.portal_stats_manager,admin,ml_admin,platform_ml_read,platform_ml_write,chat_admin,search_application_admin,search_relevancy_model_admin,import_set_loader,catalog_admin,sn_ace.ace_user,import_scheduler,pa_viewer,nlu_editor,sn_templated_snip.template_snippet_admin,sn_hr_sp.esc_admin,nlu_user,personalize_dictionary,live_feed_admin,sn_templated_snip.template_snippet_writer,evam_admin,sn_hr_sp.admin,ml_labeler,sp_admin,announcement_admin,pa_data_collector,import_admin,sn_templated_snip.template_snippet_reader,teamdev_code_reviewer,agent_security_admin,user_criteria_admin,image_admin,sn_employee.admin,sn_nlu_workbench.nlu_feedback_admin', true);
+			}
+		    
+		    // We want to preload all useful client preferences that will be used by the UI. At the moment
+		    // we have to do this manually, but this should be replaced by a dynamic list.
+		    window.g_user.setPreference('glide.ui.accessibility', 'false');
+		});
+	</script><SCRIPT data-comment="submit and load">
+g_event_handlers_onLoad['onLoad_d5d143f8c37a6a10ed4bd50d05013128'] = 'calcReturn';
+g_event_handler_ids['onLoad_d5d143f8c37a6a10ed4bd50d05013128'] = '2bf56855a9fe156100d09e8a53b63ea9';
+function onLoad_d5d143f8c37a6a10ed4bd50d05013128() {
+}
+
+function calcReturn0(response, args) {
+   var answer = response.responseXML.documentElement.getAttribute("answer");
+   var array = new Array();
+   array.push(args);
+   calcReturn(answer, response, array);
+}
+
+function calcReturn(answer, response, args) {
+   var controlName = args[0];
+   var myControl = g_form.getControl(controlName);
+   var label = "nolabel";
+   var value = answer
+   if (answer && answer.indexOf("|") > -1) {
+      var parts = answer.split("|");
+      value = parts[0];
+      label = parts[1];
+   }
+   g_form.setValue(controlName, value, label);
+}
+
+addRenderEventLogged(onLoad_d5d143f8c37a6a10ed4bd50d05013128, 'onLoad calcReturn','onLoad_d5d143f8c37a6a10ed4bd50d05013128');
+
+
+
+g_event_handlers_onLoad['onLoad_19d143f8c37a6a10ed4bd50d05013128'] = 'ShowConfirmUpdateDialog';
+g_event_handler_ids['onLoad_19d143f8c37a6a10ed4bd50d05013128'] = 'e82b810a439502106cd5da04aab8f26a';
+function onLoad_19d143f8c37a6a10ed4bd50d05013128() {}
+function showDialogForRiskyFiles() {
+    var dialogClass = window.GlideModal ? GlideModal : GlideDialogWindow;
+    var dlg = new dialogClass('risky_file_update_confirm');
+    dlg.setTitle(new GwtMessage().getMessage('File Customizations'));
+    dlg.setWidth(575);
+    dlg.render();
+}
+
+addRenderEventLogged(onLoad_19d143f8c37a6a10ed4bd50d05013128, 'onLoad ShowConfirmUpdateDialog','onLoad_19d143f8c37a6a10ed4bd50d05013128');
+
+
+
+</SCRIPT><SCRIPT data-comment="onChange">
+</SCRIPT><span data-comment="section context" style="display: none"><script>var gcm = new GwtContextMenu('context_1', true);
+			var gcmSection = gcm;
+			gcm.clear();
+			gcm.setTableName('u_test_table');</script><input type="hidden" name="sysverb_update_and_stay" id="sysverb_update_and_stay" gsft_id="47f371dfc0a8000600d86dd2da62a9e7"></input><script>gcm.addHref("Save", "gsftSubmit(gel('sysverb_update_and_stay'))", null, "Save record and remain here", null, "");</script><script>var mModify = new GwtContextMenu('context_modifysube46089cfc3662210ed4bd50d0501318e');
+        mModify.setTableName('u_test_table');
+        mModify.clear();
+
+        
+            
+            gcm.addLine();
+            
+                
+                
+                    mModify.addFunc("Form Builder", function() {
+                        var url = new GlideURL('now/build/form/main/params/table/u_test_table/view/Default view/page/views/context/platform');
+                        g_navigation.open(url.getURL(), 'edit_form_builder');
+                    });
+                
+                
+                    mModify.addFunc("Form Design", function() {
+                        var url = new GlideURL('$ng_fd.do');
+                        url.addParam('sysparm_attributes', 'startTable:"u_test_table",startView:"Default view"');
+						g_navigation.open(url.getURL(), 'edit_form_design');
+                    });
+                
+                
+                mModify.addFunc("Form Layout", function() { personalizer('auto', 'section'); });
+            
+            
+              
+                mModify.addFunc("Related Lists", function() { personalizer('u_test_table', 'related_list'); });
+              
+            mModify.addLine();
+            
+                mModify.addURL("All", "personalize_all.do?sysparm_rules_table=u_test_table&sysparm_rules_label=test_tables");
+            
+            
+                mModify.addURL("Table", "sys_db_object.do?sys_id=u_test_table&sysparm_refkey=name");
+            
+			
+				mModify.addFunc("Security Rules", function() { listSecurity('table', 'u_test_table'); });
+			
+            
+                mModify.addFunc("Business Rules", function() { listCollection('sys_script', 'collection', 'u_test_table', ''); });
+            
+            
+                mModify.addFunc("Client Scripts", function() { listCollection('sys_script_client', 'table', 'u_test_table', ''); });
+            
+            
+				mModify.addFunc("UI Policies", function() { listCollection('sys_ui_policy', 'table', 'u_test_table', ''); });
+            
+            
+				mModify.addFunc("Data Policies", function() { listCollection('sys_data_policy2', 'model_table', 'u_test_table', ''); });
+            
+            
+				mModify.addFunc("UI Actions", function() { listCollection('sys_ui_action', 'table', 'u_test_table', ''); });
+            
+            
+				mModify.addFunc("Notifications", function() { listCollection('sysevent_email_action', 'collection', 'u_test_table', ''); });
+            
+            
+                mModify.addFunc("Dictionary", function() { personalizeFields('u_test_table', 'sys_dictionary_list.do'); });
+            
+            gcm.addMenu("Configure", mModify, "context_configuremenu");
+        </script><script>var mExport = new GwtContextMenu('context_pdfsube46089cfc3662210ed4bd50d0501318e');
+        mExport.setTableName('u_test_table');
+        mExport.clear();mExport.addFunc("PDF", function() {
+				var gdw = new GlideModal("export_to_pdf", false, 400);
+				gdw.setTitle(getMessage("Export to PDF"));
+				gdw.setPreference("sysparm_table_name", 'u_test_table');
+				gdw.setPreference("sysparm_sys_id", '1dd143f8c37a6a10ed4bd50d05013119');
+				gdw.setPreference("sysparm_view", '');
+				gdw.setPreference("sysparm_domain", '');
+				gdw.render();
+			});mExport.addURL("XML (This Record)", "u_test_table.do?UNL&sysparm_query=sys_id=1dd143f8c37a6a10ed4bd50d05013119");gcm.addMenu("Export", mExport, "context_exportmenu");gcm.addLine();</script><script>gcm.addFunc("Create Favorite", function() {
+				if (typeof MagellanCreateFavorites !== 'undefined' && MagellanCreateFavorites.addFavorite) {
+					MagellanCreateFavorites.addFavorite({
+						title : 'Create new test_table',
+						icon : 'form'
+					});
+				}
+			}, "context_createfavorite");</script><script>
+		
+			
+			
+			
+				gcm.addHref("Copy URL", "copyToClipboard('https://dev315171.service-now.com/nav_to.do?uri=u_test_table.do?sys_id=1dd143f8c37a6a10ed4bd50d05013119');");
+			
+
+		gcm.addHref("Copy sys_id", "copyToClipboard('1dd143f8c37a6a10ed4bd50d05013119');");</script><script>gcm.addHref("Reload form", "reloadWindow(window);");</script><input type="hidden" name="personalizer_u_test_table" id="personalizer_u_test_table" value="true"></input></span></form><script data-comment="related list timing">g_related_list_timing = 'default';</script><div class="tabs2_strip tabs2_strip_default" id="tabs2_list" style="display:none;"></div><div id="tabs2_spacer"><div id="related_lists_wrapper" class="tabs2_wrapper_default"></div></div><div id="formSettingsContainer" class="form-settings-container"><div class="heading-wrapper clearfix"><h2>Personalize Form</h2><button type="button" class="btn btn-destructive-subdued personalize_form_preference_reset pull-right" style="visibility: hidden;" tabindex="-1">Reset</button></div><div class="popover-body"><form><fieldset class="form-settings-fieldset"><legend id="personalize_form_list_desc">Form Fields</legend><ul class="personalize_form_fields" role="menu" tabindex="-1" aria-labelledby="personalize_form_list_desc"></ul></fieldset></form></div><script id="personalize_item" type="application/xml"><li class="row" role="presentation" tabindex="-1"><span class="input-group-checkbox"><input class="checkbox" type="checkbox" id="#{name}" name="#{name}" value="selected" tabindex="-1" data-now-ux-metrics-event="Personalize Form Field" role="menuitemcheckbox" aria-label="#{HTML:label}" aria-checked="false"></input><label for="#{name}" class="checkbox-label pull-left">#{HTML:label}</label></span></li></script></div><div id="page_timing_div" class="timingDiv" role="complementary"></div></div><script data-description="MessagesTag">(function() {
+ var messages = new GwtMessage();
+messages.set('All Templates');
+messages.set('Edit Template');
+messages.set('Create New Template');
+messages.set('Templates');
+messages.set('No templates are available');
+messages.set('Create a new one?');
+messages.set('Save');
+messages.set('Edit');
+messages.set('#{HTML:name} Template not Applied');
+messages.set('#{HTML:name} Template Applied');
+messages.set('#{HTML:name} Template Applied with #{errorCount} #{errorText}');
+messages.set('See Details');
+messages.set('Set <b>#{HTML:name}</b> to <b>#{HTML:value}</b>');
+messages.set('Undo Changes');
+messages.set('Unable to update field');
+messages.set('#{item} not present on this form');
+messages.set('Close');
+messages.set('Help');
+messages.set('Templates let you update several fields on a form with a single click');
+messages.set('Clear');
+messages.set('Cancel');
+messages.set('Added Template bar landmark to bottom of form.');
+messages.set('Removed Template bar landmark from bottom of form.');
+})()</script><span role="region" id="template-bar-aria-live" aria-live="polite" class="sr-only"></span><div id="template-bar-aria-container" class="navbar navbar-default navbar-fixed-bottom template-overflow" data-type="template_footer" data-ref="u_test_table" role="region" aria-label="Template Bar"><div class="container-fluid"><div class="navbar-text navbar-left" id="templates-list-container">No templates are available<ul id="templates-list-items"><li class="templates-list-item"><a data-type="create-new-template" href="javascript:void(0);" role="button" data-ref="u_test_table" class="template-item" title="Create New Template">Create a new one?</a></li></ul></div><button data-type="template-list-overflow-button" data-target="#templateOverflowContainer" data-ref="u_test_table" title="All templates" aria-label="All templates" aria-haspopup="true" aria-expanded="false" class="navbar-btn btn btn-default icon-ellipsis"></button><button data-type="create-new-template" tabindex="0" aria-label="Create New Template" data-ref="u_test_table" class="btn btn-default icon-add navbar-btn" title="Create New Template"></button><button data-type="disable-template-bar" class="btn btn-default icon-cross navbar-btn" aria-label="Disable Template Bar" title="Disable Template Bar"></button></div></div><div id="templateOverflowContainer" class="template-overflow-container" canWrite="true"><div class="popover-body"><div class="input-group-transparent"><span class="input-group-addon-transparent icon-filter"></span><input id="overflowTemplateSearch" class="form-control form-control-search" type="search" name="search1" placeholder="Filter Templates" aria-label="Filter Templates"></input><span class="icon-cross-circle template_filter_clear" title="" data-type="clearTemplateFilter" data-original-title="Clear" aria-label="Clear search" role="button"></span></div><span id="no_search_results">No Results</span><ul class="template_overflow_items"></ul></div></div><script type="text/javascript" data-comment="dirty form support">window.g_form_dirty_support = true;
+			
+			
+			window.g_form_dirty_message = 'Changes have been made, continuing will discard the changes';
+			$j(window).bind('beforeunload', onWindowClose);
+
+			window.g_form_dirty_autosave = false</script><script data-description="MessagesTag">(function() {
+ var messages = new GwtMessage();
+messages.set('Save Changes','Save changes');
+})()</script><script type="xml/template" id="dirty_form_modal" data-comment="Dirty form modal"><div role="alertdialog" aria-labelledby="dirty_form_modal_confirmation_description" aria-describedby="dirty_form_modal_confirmation_description"><p id="dirty_form_modal_confirmation_description">Do you want to save changes to #{HTML:displayValue} before leaving this page?</p><div class="modal-footer flex"><button class="btn btn-destructive-subdued" role="button" data-action="discard" type="button">Discard</button><button class="btn btn-primary" role="button" data-action="save" type="button">Save</button></div></div></script><script type="text/javascript" src="/scripts/ui_policy.jsx?v=06-25-2025_1836"></script><script>addRenderEvent(function() {
+			
+		});ui_policy_add([]);
+	        addRenderEvent(ui_policy_onLoad);
+			jslog("added render event for ui_policy_onLoad");</script><script>/*! RESOURCE: /scripts/DataLookup.jsx */
+(function (w) {
+	w.DataLookup = {
+		fields: {},
+		addDataLookupDefinition: function(field, id) {
+			if (!window.DataLookup.fields[field])
+				window.DataLookup.fields[field] = [id];
+			else
+				window.DataLookup.fields[field].push(id);
+		},
+		bindEventHandlers: function() {
+			for (var field in window.DataLookup.fields) {
+				window.g_event_handlers.push({
+					fieldName: field,
+					handler: function (control, oldValue, newValue, isLoading) {
+						window.setTimeout(function(){
+							window.DataLookup.process(control, oldValue, newValue, isLoading);
+						});
+					}
+				});
+			}
+		},
+		process: function(control, oldValue, newValue, isLoading) {
+			if (isLoading || !g_form)
+				return;
+			var serializedForm = g_form.serialize();
+			if (!serializedForm || (
+				w.DataLookup.lastLookup === serializedForm && w.DataLookup.lastLookupField === control.name))
+				return;
+			if (w.g_skip_dataLookup)
+				return;
+			for (var i = 0; i < this.fields[control.name].length; i++) {
+				w.DataLookup.lastLookupField = control.name;
+				w.DataLookup.lastLookup = serializedForm;
+				this.processAjaxRequest(this.fields[control.name][i], control);
+			}
+		},
+		processAjaxRequest: function(lookupId, control) {
+			var ajax = new GlideAjax('AJAXDataLookup');
+			ajax.addParam('sysparm_silent_request', 'true');
+			ajax.addParam('sys_lookup_id', lookupId);
+			ajax.addParam('sys_target', g_form.getTableName());
+			ajax.addParam('sys_uniqueValue', g_form.getUniqueValue());
+			ajax.addEncodedString(w.DataLookup.lastLookup);
+			ajax.getXML(function(response) {
+				CustomEvent.fire('glide_optics_inspect_put_context', 'data_lookup', 'onchange of ' + control.name);
+				$A(response.responseXML.getElementsByTagName('item')).each(function(item) {
+					var name = item.getAttribute('name');
+					var val = item.getAttribute('value');
+					var label = item.getAttribute('label');
+					w.g_skip_datalookup = true;
+					if (val != null && label != null)
+						g_form.setValue(name, val, label);
+					else
+						g_form.setValue(name, val);
+					w.g_skip_datalookup = false;
+				});
+				CustomEvent.fire('glide_optics_inspect_pop_context');
+			})
+		}
+	};
+})(window);
+;</script><script type="text/javascript">addRenderEvent(function() {
+		// if DataLookup.js didn't load, don't throw errors
+		if (!window.DataLookup)
+			return;window.DataLookup.bindEventHandlers();
+      });</script><script data-comment="form rendered from form.xml">(function() {
+			"use strict";
+			gFormSW.jslog("form rendered");
+			addTopRenderEvent(tabs2Init);SN.formAnnotations.preference = true;
+			SN.formAnnotations.infoPreference = true;
+
+			addRenderEvent(function() {
+				SN.formAnnotations.init();
+				var g_section_contents = null;
+				CustomEvent.fire("form.loaded");
+			});addLateLoadEvent(function() {
+					CustomEvent.fire('frame.resized');
+					CustomEvent.fire('refresh.event');
+				});})();// Focus to the first writable element on the form
+				//
+				// (jayb) Do this as inline script instead of an onload event so that it
+				// runs at form render time, not after other onload events that can delay
+				// the focus setting and cause it to occur after the user has clicked on
+				// a field.
+				//
+				// If the user has pressed the mouse button, then don't focus since we will
+				// be stealing the focus from the use at that point.
+				addLoadEvent(function() {
+					if (!g_formDirtyFocus) {
+						var f = document.forms['u_test_table.do'];
+						if (!f) return;
+						if (top.NOW.magellan && top.NOW.magellan.setNavigatingState)
+							top.NOW.magellan.setNavigatingState(true);
+						if (top.NOW.magellan && top.NOW.magellan.invokeWhenShouldFocus){
+							top.NOW.magellan.invokeWhenShouldFocus(window, function() {
+								focusFirstElement(f);
+							});
+						}
+					}
+				});createRowSysId();
+		function createRowSysId() {
+		var x = gel('sys_uniqueValue');
+		if (x)
+			rowSysId = x.value;
+		}
+
+		// PRB668587 - Fixes Windows 7 IE11 touch scroll issue
+		(function() {
+			if ((!isMSIE11) || ("ontouchstart" in document.documentElement) || ("ongesturestart" in document.documentElement) || typeof $j === 'undefined')
+				return;
+			$j('body').removeClass('touch_scroll');
+		})();
+
+		var x = NOW.xperf;
+		x.formEnd = NOW.xperf.now();
+		$j(function() {
+			var x = NOW.xperf;
+			var ms = Math.round(x.formEnd - x.formBegin);
+			CustomEvent.fire('page_timing', { name: 'SECT', ms: ms, win: window });
+		})</script><script>try {
+				NOW.recordMembers = JSON.parse("{}");
+			} catch(e) {
+				jslog("Error parsing record members: " + e);
+			}</script><script type="text/javascript" data-description="Angular initialize">function initAngularForm() {
+			var baseModules = [];baseModules = baseModules.concat(['sn.common.video', 'sn.common.stream', 'heisenberg', 'sn.form_presence']);return window.ANGULAR_BOOTSTRAPPER.bootstrap(baseModules);}</script>
+	
+	<div class="modal" id="createFavoritesModal" aria-labelledby="favorite_modal_title" name="create_favorites_modal" role="dialog">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<header class="modal-header clearfix">
+					<button data-dismiss="modal" class="btn btn-icon close icon-cross">
+						<span class="sr-only">Close</span></button>
+					<h2 id="favorite_modal_title" class="modal-title pull-left h4">Create Favorite</h2></header>
+				<form class="create-favorite" name="create_favorite_form">
+					<div class="modal-body clearfix">
+					<div id="output_messages_favorite" class="outputmsg_container outputmsg_hide compact">
+						<button aria-label="Close Messages" class="btn btn-icon close icon-cross"></button>
+						<div class="outputmsg_div" aria-live="polite" role="region" data-server-messages="false"></div></div>
+						<div id="favorite_preview"><span></span></div>
+						<label class="sr-only" for="create_favorite_title" aria-labelledby="create_favorite_title">Bookmark title</label>
+						<input type="text" id="create_favorite_title" name="title" class="form-control" value="" aria-label="Bookmark title" aria-required="true" aria-invalid="false" placeholder="Bookmark title"></input>
+						<input type="hidden" name="url" value=""></input>
+						<input type="hidden" name="window_name" value=""></input>
+						<input type="hidden" name="id" value=""></input>
+						<input type="hidden" name="color" value=""></input>
+						<div class="color-picker">
+							<fieldset id="icon_colors">
+								<legend class="sr-only">Color</legend></fieldset></div>
+						<input type="hidden" name="icon" value=""></input>
+						<div class="icon-picker">
+							<fieldset id="icon_picker" class="nav-edit-favorites-icon-grid">
+								<legend class="sr-only">Icon</legend></fieldset></div></div>
+					<div class="modal-footer">
+						<button data-dismiss="modal" type="button" class="btn btn-default">Cancel</button>
+						<button type="submit" class="btn btn-primary">Done</button></div></form>
+				<script type="text/javascript">
+					
+						window.MagellanCreateFavorites = {
+							navColors : ["purple","blue","cyan","aquamarine","green","yellow","orange","burnt-orange","red","pink","fuschia","white"],
+							navIcons : ["article-document","user","user-group","lightbulb","home","mobile","comment","mail","locked","database","book","drawer","folder","catalog","tab","cards","tree-right","tree","book-open","paperclip","edit","trash","image","search","power","cog","star","star-empty","new-ticket","dashboard","cart-full","view","label","filter","calendar","script","add","delete","help","check-circle","alert","sort-ascending","console","list","form","livefeed","key","hr"],
+							paramBlackList : ["sysparm_no_stack","sysparm_userpref_module","sysparm_record_target","sysparm_record_row","sysparm_record_rows","sysparm_record_list"]
+						};
+					</script>
+				<script type="text/javascript" src="/scripts/thirdparty/radio/radioButton.jsx?v=06-25-2025_1836"></script>
+				<script type="text/javascript" src="/scripts/thirdparty/radio/radioGroup.jsx?v=06-25-2025_1836"></script>
+				<script type="text/javascript" src="/scripts/magellan.CreateFavoriteModal.jsx?v=06-25-2025_1836"></script></div></div></div><script>CustomEvent.fireTop('magellanNavigator.historyAdded', {history : JSON.parse("{\"table\":\"u_test_table\",\"id\":\"11d143f8c37a6a10ed4bd50d05013129\",\"timestamp\":1752579898000,\"description\":\"New Record\",\"title\":\"test_table\",\"url\":\"u_test_table.do\",\"timestampOffset\":1752578998000,\"prettyTitle\":\"test_table\",\"createdString\":\"2025-07-15 04:44:58\"}")});</script><script>window.NOW.UXMetrics = window.NOW.UXMetrics || {};
+			window.NOW.UXMetrics.viewInfo = {
+				'viewId': 'Default view',
+				'viewName': 'Default view'
+			}</script><script type="module">var libraryIntentChannelUrl = '/uxasset/externals/@devsnc/library-intent-channel/index.jsdbx';
+					if (window.parent && window.parent.ux_globals && window.parent.ux_globals.assetBundleInUse)
+						libraryIntentChannelUrl += '?sysparm_replace_imports=true';
+
+					import(libraryIntentChannelUrl)
+						.then(function (libraryIntentChannel) {
+							var registerTranslator = libraryIntentChannel.registerTranslator;
+							var setActiveTranslator = libraryIntentChannel.setActiveTranslator;
+							var updateContext = libraryIntentChannel.updateContext;
+
+							try {
+								var sysId = '1dd143f8c37a6a10ed4bd50d05013119';
+								var table = 'u_test_table';
+
+								var translatorKey = "form/" + table + "/" + sysId;
+
+								var context = {
+									table,
+									sysId,
+									experienceName: 'Core UI'
+								};
+
+								registerTranslator(translatorKey, function () {}, context);
+								setActiveTranslator(translatorKey);
+
+								updateContext(translatorKey, context);
+
+							} catch(e) {
+								jslog("Error in registering Now Assist context: " + e);
+							}
+					
+						}).catch(function (e) {
+							jslog("Error in registering Now Assist context: " + e);
+						});</script><div style="border:none; visibility:hidden"><form name="sys_personalize" method="GET" action="slushbucket.do"><input type="hidden" name="sysparm_referring_url" value="u_test_table.do"></input><input type="hidden" name="sysparm_view" value=""></input></form></div><script type="text/javascript" src="/scripts/ui_page_footer.jsx?v=06-25-2025_1836"></script><span style="display:none" data-comments="js_includes_last_doctype"></span><script type="text/javascript" src="/scripts/thirdparty/dom_purify/purify.jsx?v=06-25-2025_1836&amp;sysparm_substitute=false"></script><script>NOW.xperf.lastDoctypeBegin = NOW.xperf.now();</script><script type="text/javascript" src="/scripts/doctype/js_includes_last_doctype.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><script type="text/javascript" src="/scripts/heisenberg/heisenberg_all.jsx?v=06-25-2025_1836"></script><script type="text/javascript" src="/scripts/js_includes_list_edit_doctype.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><script type="text/javascript" src="/scripts/transaction_scope_includes.jsx?v=06-25-2025_1836"></script><script>if ('') 
+			GlideTransactionScope.setTransactionScope('');
+		if ('') 
+			GlideTransactionScope.setRecordScope('');
+		if ('') 
+			GlideTransactionScope.setTransactionUpdateSet('');
+		if (typeof g_form != 'undefined')
+			$(g_form.getFormElement()).fire('glidescope:initialized', {gts : GlideTransactionScope});</script><span style="display:none" data-comments="requires"></span><script type="text/javascript" src="/scripts/lib/newtag-it.jsx?v=06-25-2025_1836"></script><script type="text/javascript" src="/scripts/form_tags.jsx?v=06-25-2025_1836"></script><script type="text/javascript" src="/scripts/cs.collab/collabButton.jsx?v=06-25-2025_1836"></script><script>/*! RESOURCE: /scripts/elements/element_attributes.jsx */
+addAfterPageLoadedEvent(function () {
+document.body.on('click', 'a[data-type="spell_check"]', function(evt, element) {
+	spellCheck(element.getAttribute('data-ref'));
+});
+document.body.on('click', 'a[data-type="mode_toggler"]', function(evt, element) {
+	toggleMode(element.getAttribute('data-ref')); 
+});
+document.body.on('click', 'a[data-type="debug_toggler"]', function(evt, element) {
+	toggleDebug(element.getAttribute('data-ref')); 
+});
+document.body.on('click', 'a[data-type="html_view"]', function(evt, element) {
+	htmlView(element.getAttribute('data-ref'), element.getAttribute('data-sys_id')); 
+});
+function toggleMode(id) {
+	var widget = $("ni_mode_" + id);
+	if (!widget)
+		return;
+	var currentMode = widget.value;
+	if (currentMode == 'freeform')
+		currentMode = 'select';
+	else
+		currentMode = 'freeform';
+	widget.value = currentMode;
+	setMyVisibility(id);
+	setPreference('mode_' + id, currentMode);
+}
+});
+;</script><script>/*! RESOURCE: /scripts/elements/element_pick_list.jsx */
+(function () {
+document.on('keyup', 'input[data-type="pick_list"]', function (evt, element) {
+	var ref = element.getAttribute('data-ref');
+	var d = element.getAttribute('data-dependent');
+	acKeyUp(evt, ref, 'PickList', d);
+});
+document.on('keydown', 'input[data-type="pick_list"]', function (evt, element) {
+	var ref = element.getAttribute('data-ref');
+	var d = element.getAttribute('data-dependent');
+	acKeyDown(evt, ref, 'PickList', d);
+});
+document.on('keypress', 'input[data-type="pick_list"]', function (evt, element) {
+	var ref = element.getAttribute('data-ref');
+	checkEnter(evt, ref);
+});
+document.on('click', 'a[data-type="pick_list"]', function (evt, element) {
+	mousePositionSave(evt);
+	openPickList(element);
+});
+document.on('keydown', 'a[data-type="pick_list"]', function (evt, element) {
+	if (evt.keyCode === 32) {
+		evt.preventDefault();
+		openPickList(element);
+	}
+});
+function openPickList(element) {
+	var ref = element.getAttribute('data-ref');
+	var url = "pick_list.do";
+	url += "?sysparm_name=" + element.getAttribute("data-table");
+	url += "&sysparm_target=" + element.getAttribute("data-ref");
+	url += "&sysparm_element=" + element.getAttribute("data-element");
+	url += "&sysparm_view=sys_pick_list";
+	picklistOpen(url, 530, 0, 0, element.getAttribute("data-ref"), element.getAttribute("data-dependent"));
+}
+document.on('click', 'a[data-type="response_pick_list"]', function (evt, element) {
+	mousePositionSave(evt);
+	var ref = element.getAttribute('data-ref');
+	var url = "response_list.do";
+	url += "?sysparm_name=" + element.getAttribute("data-table");
+	url += "&sysparm_target=" + element.getAttribute("data-ref");
+	url += "&sysparm_element=" + element.getAttribute("data-element");
+	url += "&sysparm_view=sys_pick_list";
+	url += "&sysparm_sys_id=" + element.getAttribute("data-sys_id");
+	picklistOpen(url, 530, 0, 0, element.getAttribute("data-ref"));
+});
+})();
+;</script><script>/*! RESOURCE: /scripts/elements/element_attribute_knowledge.jsx */
+(function () {
+	document.on('click', 'a[data-type="attribute_knowledge"]', function(evt, element) {
+	var kb_url_prefix = (document.getElementById("kb_url_prefix") ? document.getElementById("kb_url_prefix").value : 'kb');
+    mousePositionSave(evt);
+    var customPopup = element.getAttribute('data-custom');
+    var table = element.getAttribute('data-table');
+    var operator = element.getAttribute('data-op');
+    g_kb_search_result_order = element.getAttribute('data-order');
+    var usev2search = element.getAttribute('data-legacy-renderer');
+    var ref = element.getAttribute('data-for');
+	var isSocialQAPluginEnabled = element.getAttribute('data-sqa-installed');
+    element = $(ref);
+    if (!element)
+        return;
+    
+    window.fillField = ref;
+    var searchText = element.value;
+    if (customPopup)
+        window[customPopup](searchText, element);
+    else {
+    	var url;
+    	if(usev2search == 'true'){
+	        url = 'kb_find.do?sysparm_search=' + encodeURIComponent(searchText);
+	        url += "&sysparm_nameofstack=kbpop";
+	        url += "&sysparm_kb_search_table=" + table;
+	        url += "&sysparm_operator=" + operator;
+	        url += "&sysparm_order=" + g_kb_search_result_order;
+	        popupOpenStandard(url, "kb2task");
+    	}else{
+	        url = kb_url_prefix+'?id=kb_search&spa=1&query='+ encodeURIComponent(searchText);
+	        url += '&sysparm_kb_search_table=' + table;
+			if(isSocialQAPluginEnabled == 'true')
+			{
+				url+='&resources=Knowledge';
+			}
+	        var width = 1000;
+	        var height = 480;
+	        var features = "width="+ width +",height="+ height +",toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollbars=1";
+	        popupOpen(url, "kb2task", width, height, features, true );
+		}
+    }
+});
+})();
+function setKbSortOrder(value) {
+	var fieldName = window.fillField;
+	var e = document.getElementById(fieldName);
+	e = e.parentNode.parentNode;
+	e = $(e);
+	var f = e.getElementsBySelector('a[data-for=' + fieldName + ']');
+	if (f.length > 0) {
+		var g = f[0];
+		g.setAttribute('data-order', value);
+	}
+}
+;</script><script>/*! RESOURCE: /scripts/elements/element_boolean.jsx */
+addLateLoadEvent(function () {
+	document.body.on('click', 'input[data-type="boolean"]', function(evt, element) {
+		if (element.hasClassName('disabled'))
+			return;
+		setCheckBox(element);
+		var ref = element.getAttribute('data-ref');
+		onChange(ref);
+		telemetryForRecordUpdateElement(ref);
+	});
+});
+;</script><script>/*! RESOURCE: /scripts/elements/doctype/element_date.jsx */
+document.body.on('click', 'a[data-type="element_date"]', function(evt, element) {
+	evt.preventDefault();
+	var ref = element.getAttribute('data-ref');
+	var format = element.getAttribute('data-date_time_format');
+ScriptLoader.getScripts('scripts/classes/GwtDateTimePicker.js', function() {
+		new GwtDateTimePicker(ref, format, false); 
+	});
+});
+var GlideElementDate = Class.create({
+	initialize: function(name){
+		this.name = name;
+	},
+	setValue: function(value, displayValue) {
+		gel(this.name).value = displayValue || value;
+		onChange(this.name);
+		telemetryForRecordUpdateElement(this.name);
+	},
+	type : "GlideElementDate",
+	z : null
+});
+(function(){
+	CachedEvent.after('glideform.initialized', function() {
+		var elems = $$('input[data-type="glide_element_date"]');
+		elems.each(function(elem, index) {
+			var ref = elem.getAttribute('data-ref');
+			if (ref) {
+				var gdHandler = new GlideElementDate(ref);
+				g_form.registerHandler(ref, gdHandler);
+			}
+			elem.observe('change', function(evt){
+				onChange(ref);
+				telemetryForRecordUpdateElement(ref);
+			});
+		})
+	});
+})();
+;</script><script>/*! RESOURCE: /scripts/elements/element_phone_number_e164.jsx */
+function g_phoneNumberDependentChange (ref, dependent) {
+	element = gel('country_'+ref);
+	if (element) 
+		new PhoneNumberE164(element).changePhoneNumberFromDependent(dependent);
+	else 
+		new PhoneNumberE164(gel('disp_'+ref)).changePhoneNumberFromDependent(dependent);
+}
+function onChangePhoneNumberE164(type, element) {
+	var pn = new PhoneNumberE164(element, (type=='select'));
+	if (type == 'select')
+		pn.changePhoneNumberFromSelect();
+	else
+		pn.changePhoneNumberFromInput();
+	var ref = element.getAttribute('element_ref');
+	telemetryForRecordUpdateElement(ref);
+}
+	
+var PhoneNumberE164 = Class.create();
+PhoneNumberE164.prototype = {
+	element 				: null,
+	phoneElement			: null,
+	displayElement			: null,
+	selectElement			: null,
+	countryTextElement		: null,
+	
+	ref						: null,
+	nationalFormat			: null,
+	strict					: null,
+	gdc						: null,
+	ldc						: null,
+	ldcFollowsGdc			: null,
+	usersCountry			: null,
+	allowNationalEntry		: null,
+	
+	valid					: true,
+	hasSelect				: false,
+	isSelect				: false,
+	displayNationalForUser	: false,
+	selectedCache			: null,
+	displayCountryText		: null,
+	displayCountryNational	: null,
+	
+	
+    initialize : function(element, isSelect) {
+    	this.element = element;
+    	this.isSelect = isSelect;
+    	
+    	this._loadReferenceId();
+    	
+    	this.phoneElement = gel(this.ref);	
+    	this.valid = true;
+    	this.displayElement = gel("disp_" + this.ref);	
+  		this.selectElement = gel("country_" + this.ref);	    		
+    	
+    	this.countryTextElement = gel("country_txt_" + this.ref);	
+    	
+    	this._loadElementData();
+    },
+    _loadReferenceId : function () {
+    	this.ref = this.element.getAttribute("element_ref");	
+    },
+    
+    _loadElementData : function() {
+		this.nationalFormat = (this.displayElement.getAttribute("data-national") == 'true');
+		this.strict = (this.displayElement.getAttribute("data-strict") == 'true');
+		this.gdc = this.displayElement.getAttribute("data-gdc");
+		this.ldc = this.displayElement.getAttribute("data-ldc");
+		this.ldcFollowsGdc = this.displayElement.getAttribute("data-local-global");
+		this.allowNationalEntry = (this.displayElement.getAttribute("data-allow-national") == 'true');
+		
+		this.usersCountry = null;
+		this.displayNationalForUser = false;
+		if (this.displayElement.getAttribute("data-localuser") == 'true') {
+			this.displayNationalForUser = true;
+			this.usersCountry = this.displayElement.getAttribute("data-user-country");
+		}
+		this.hasSelect = (this.displayElement.getAttribute("data-select") == 'true');
+		this.selectedCache = this.displayElement.getAttribute("data-selected-cache");
+		this.displayCountryText = this.displayElement.getAttribute("data-country-text");
+		this.displayCountryTextNational = (this.displayElement.getAttribute("data-country-text-national") == 'true');
+	},
+	
+	_ltrim : function (value) {
+		if (value == null)
+			return null;
+		
+return value.replace(/^\s+/,'');
+	},
+	changePhoneNumberFromDependent : function(dependentRef) {
+		var phoneNumber = this._ltrim(this.phoneElement.value);
+		if (this.isSelect)
+			if (phoneNumber != "")
+				return;
+		
+		if (!gel(dependentRef))
+			return;
+		this._updateFromDependent(dependentRef);
+		
+		
+	},
+	
+	updateSelectForUser : function(dependentRef) {
+		this._updateFromDependent(dependentRef);
+	},
+	
+	changePhoneNumberFromInput : function() {
+if (this.element == this.phoneElement)
+			this.displayElement.value = this.phoneElement.value;
+		
+		if (this.hasSelect)
+			this._changePhoneNumberFromInputWithSelect();
+		else
+			this._changePhoneNumberFromInputNoSelect();
+	},
+	
+	_changePhoneNumberFromInputWithSelect : function() {
+		var phoneNumber = this._ltrim(this.displayElement.value + "");
+		var strippedPhoneNumber = this._stripCharacters(phoneNumber);
+		if (strippedPhoneNumber == "") {
+			this.phoneElement.value = "";
+			this._setCountryText("");
+			this._setSelectedCache("," + this.selectElement.value);
+			this._validateEntry();
+			return;
+		}
+		
+		var listElementValue = this.selectElement.value + "";
+		var fullCountryProvided = (phoneNumber.substr(0,1) == "+");
+		var gdc = "";
+		var ldc = "";
+		var ldcFollowsGdc = "";
+		if (listElementValue != "") {
+			var vals = listElementValue.split(',');
+			gdc = vals[0];
+			ldc = vals[1];
+			ldcFollowsGdc = (vals[2] == true);
+		}
+		
+		
+		var partialMatch = "";
+		var findFormat = true;
+		if (fullCountryProvided) {
+			this._setSelectedCache(strippedPhoneNumber + "," + this.selectElement.value);
+			strippedPhoneNumber = "+" + strippedPhoneNumber;
+			this._setUserNationalFormatFromGDC(this.gdc, strippedPhoneNumber);
+			this.reformatPhoneNumber(strippedPhoneNumber, strippedPhoneNumber);			
+			return;
+	
+} else if (this.allowNationalEntry) {
+			if (!ldcFollowsGdc && strippedPhoneNumber.substr(0,ldc.length) == ldc)
+				strippedPhoneNumber = strippedPhoneNumber.substr(ldc.length);
+strippedPhoneNumber = "+" + gdc + strippedPhoneNumber;
+		} else {
+			findFormat = false;
+			partialMatch = "LOCAL";
+		}
+		
+		if (findFormat) {
+			this._setSelectedCache(strippedPhoneNumber + "," + this.selectElement.value);
+			this._setUserNationalFormat();
+			this.reformatPhoneNumber(strippedPhoneNumber, strippedPhoneNumber);			
+		} else {
+			this._setSelectedCache(phoneNumber + "," + this.selectElement.value);
+			this.phoneElement.value = phoneNumber;
+			this._setCountryText("");
+			this._invalidateEntry();
+		}
+	},
+	
+	_changePhoneNumberFromInputNoSelect : function() {
+		var phoneNumber = this._ltrim(this.displayElement.value + "");
+		this._setSelectedCache(phoneNumber + "," + this.gdc + "," + this.ldc + "," + this.ldcFollowsGdc);
+		
+		var strippedPhoneNumber = this._stripCharacters(phoneNumber);
+		
+		if (strippedPhoneNumber == "") {
+			this.phoneElement.value = "";
+			this._setCountryText("");
+			this._validateEntry();
+			return;
+		}
+		this._setUserNationalFormatFromGDC(this.gdc, phoneNumber);
+		
+		var findFormat = true;
+		if (phoneNumber.substr(0,1) == "+") {
+			strippedPhoneNumber = "+" + strippedPhoneNumber;
+			cleanNumber = strippedPhoneNumber;
+		} else if (!this.allowNationalEntry)
+			findFormat = false;
+else {
+			cleanNumber = strippedPhoneNumber;
+			strippedPhoneNumber = "+" + this.gdc + strippedPhoneNumber;
+		}
+		if (findFormat) {
+			this.reformatPhoneNumber(strippedPhoneNumber, cleanNumber);
+		} else {
+			this.phoneElement.value = phoneNumber;
+			this._setCountryText("");
+			this._invalidateEntry();
+		}
+	},
+	changePhoneNumberFromSelect : function () {
+		this._setUserNationalFormat();
+this._validateEntry();
+		var phoneNumber = this.rebuildPhoneNumberFromSelect();
+		if (phoneNumber == "")
+			return;
+		this.reformatPhoneNumber(phoneNumber, phoneNumber);
+	},
+	
+	_setUserNationalFormat : function () {
+		if (!this.displayNationalForUser)
+			return false;
+		
+		if (this.usersCountry != null) {
+			var listCountry = this.selectElement.options[this.selectElement.selectedIndex].text;
+			
+			if (listCountry == this.usersCountry) {
+				this._setDisplayLocal()
+				this.nationalFormat = true;
+			} else {
+				this._setDisplayGlobal();
+				this.nationalFormat = false;
+			}
+		}
+		return this.nationalFormat;
+	},
+	
+	_setUserNationalFormatFromGDC : function (gdc, phoneNumber) {
+		if (!this.nationalFormat && !this.displayNationalForUser)
+			return false;
+		
+		if (this.displayNationalForUser) {
+			var strippedPhoneNumber = this._stripCharacters(phoneNumber);
+			if (phoneNumber.substr(0,1) == "+") {
+				if (strippedPhoneNumber.substr(0, gdc.length) == gdc) {
+					this.nationalFormat = true;
+				} else {
+					this.nationalFormat = false;
+				}
+			} else
+				this.nationalFormat = true;
+		}
+		return this.nationalFormat;
+	},
+	
+	rebuildPhoneNumberFromSelect : function () {
+		var listElementValue = this.selectElement.value + "";
+		var phoneNumber = this.displayElement.value + "";
+		var fromGDC = "";
+		var fromLDC = "";
+		var fromLDCFollowsGDC = true;
+		var toGDC = "";
+		var toLDC = "";
+		var toLDCFollowsGDC = true;
+		
+		if (this.selectedCache != "") {
+			var from = this.selectedCache.split(",");
+			phoneNumber = from[0];
+			if (from.length > 1) {
+				fromGDC = from[1];
+				fromLDC = from[2];
+				fromLDCFollowsGDC = (from[3] == 'true');
+			}
+		}
+		if (listElementValue != "") {
+			var to = listElementValue.split(",");
+			toGDC = to[0];
+			toLDC = to[1];
+			toLDCFollowsGDC = (to[2] == 'true');
+		}
+				
+		var strippedPhoneNumber = this._stripCharacters(phoneNumber);
+		var gdcFound = false;
+		if (fromGDC && strippedPhoneNumber.substr(0,fromGDC.length) == fromGDC){
+			strippedPhoneNumber = strippedPhoneNumber.substr(fromGDC.length);
+			gdcFound = true;
+		}
+		if (fromLDC && strippedPhoneNumber.substr(0,fromLDC.length) == fromLDC)
+			if (!gdcFound || fromLDCFollowsGDC)
+				strippedPhoneNumber = strippedPhoneNumber.substr(fromLDC.length);
+		
+		
+		if (strippedPhoneNumber == "")
+			return "";
+		
+		var phoneNumber = "+" + toGDC;
+		if (toLDCFollowsGDC)
+			if (strippedPhoneNumber.substr(0, toLDC.length) != toLDC)
+				phoneNumber += toLDC;
+		phoneNumber += strippedPhoneNumber;
+		return phoneNumber;					
+	},
+	_getCountryLocation : function(phoneNumber) {
+		var listElementOptions = this.selectElement.options;
+		var countryLocation = -1;
+		for (var i=0; listElementOptions.length > i; i++) {
+			var option = listElementOptions[i];
+			if (option.value == "")
+				continue;
+	
+			var optionGDC = option.value.split(",")[0];
+			if (phoneNumber.substr(0,optionGDC.length) == optionGDC) {
+				countryLocation = i;
+				break;
+			}
+		}
+		
+		return countryLocation;
+	},
+	
+	_selectCountryOption : function(optionPosition) {
+		if (optionPosition < 0) {
+			if (this.strict)
+				this._invalidateEntry();
+			else {
+				var listElementOptions = this.selectElement.options;
+				var countryLocation = -1;
+				var found = false;
+				for (var i=0; listElementOptions.length > i; i++) {
+					var option = listElementOptions[i];
+					if (option.value == "") {
+						option.selected = true;
+						found = true;
+						break;
+					}
+				}
+				if (!found)
+					this._invalidateEntry();
+			}
+		} else 
+			this.selectElement.options[optionPosition].selected = true;
+		
+		if (this.usersCountry != null) {
+			var country = this.selectElement.options[this.selectElement.selectedIndex].text;
+			if (country == this.usersCountry)
+				this._setDisplayLocal();
+			else
+				this._setDisplayGlobal();
+		}
+		
+	},
+	_setToUsersCountry : function() {
+		var listElementOptions = this.selectElement.options;
+		if (this.usersCountry != null)
+			for (var i=0; listElementOptions.length > i; i++) {
+				var option = listElementOptions[i];
+				if (option.text == this.usersCountry) {
+					option.selected = true;
+					return;
+				}
+			}
+	},
+	reformatPhoneNumber : function(phoneNumber, cleanPhoneNumber) {
+		if (phoneNumber && phoneNumber == "")
+			return;
+		if (cleanPhoneNumber.substr(0,1) != "+" && phoneNumber.substr(0,1) == "+")
+			this.phoneElement.value = phoneNumber;
+		else
+			this.phoneElement.value = cleanPhoneNumber;
+		var ajax = new GlideAjax('PhoneNumberFormatter');
+		ajax.addParam('sysparm_local', this.nationalFormat);
+		ajax.addParam('sysparm_phoneNumber', phoneNumber);		
+		ajax.addParam('sysparm_strict', this.strict);	
+		ajax.addParam('sysparm_showText', (this.countryTextElement != null));		
+		ajax.getXML(this.reformatPhoneNumberResponse.bind(this),null, cleanPhoneNumber);
+		this._invalidateEntry();		
+	},
+		
+	reformatPhoneNumberResponse : function (response, cleanPhoneNumber) {
+		var answers = response.responseXML.documentElement.getAttribute("answer").split(",");
+		var phoneNumber = unescape(answers[0]);
+		var countryText = null;
+		var newOptionValue = null;
+		if (answers.length > 1)
+			countryText = unescape(answers[1]);
+		if (answers.length > 2)
+			newOptionValue = unescape(answers[2]);
+		
+		this._setCountryText(countryText);
+		this._setNewOptionText(countryText, newOptionValue);
+		if (phoneNumber == "NO_MATCH" || phoneNumber == "") {
+			if (cleanPhoneNumber != null) {
+				var localizedNumber = cleanPhoneNumber;
+				if (this.selectElement && this.selectElement.value != "" && this.nationalFormat && localizedNumber.substr(0,1) == '+') {
+					var gdc = this.selectElement.value.split(',')[0];
+					var ldc = this.selectElement.value.split(',')[1];
+					if (localizedNumber.substr(1,gdc.length) == gdc) { 
+						localizedNumber = localizedNumber.substr(gdc.length + 1);
+						localizedNumber = ldc + localizedNumber;
+					}
+				}
+				
+				this.displayElement.value = localizedNumber;
+				if (localizedNumber.startsWith("+"))
+					this._setCountryText("");
+			}
+			this._invalidateEntry();
+			return;
+		}
+		this.displayElement.value = phoneNumber;
+		this._validateEntry();
+	},
+	_updateFromDependent : function(dependentRef) {	
+		var ajax = new GlideAjax('PhoneNumberDependent');
+		if (dependentRef && dependentRef.length > 0)
+			ajax.addParam('sysparm_sys_id', gel(dependentRef).value);
+		else
+			ajax.addParam('sysparm_sys_id', "");
+		ajax.getXML(this.updateFromDependentResponse.bind(this));
+	},
+	updateFromDependentResponse : function (response) {
+		var answers = response.responseXML.documentElement.getAttribute("answer").split(",");
+		var countryText = unescape(answers[0]);
+		var newOptionValue = null;
+		if (answers.length > 1)
+			newOptionValue = unescape(answers[1]);
+		this._setNewOptionText(countryText, newOptionValue);
+		if (!this.isSelect) {
+			var locators = newOptionValue.split(",");
+			if (locators.length >= 3) {
+				this._setSelectedCache(this.displayElement.value + "," + locators[0] + "," + locators[1] + "," + locators[2]);
+				this._setUserNationalFormatFromGDC(locators[0], "");
+				this.gdc = locators[0];
+				this.ldc = locators[1];
+				this.ldcFollowsGdc = locators[2];
+				this.displayElement.setAttribute("data-gdc",locators[0]+"");
+				this.displayElement.setAttribute("data-ldc",locators[1]+"");
+				this.displayElement.setAttribute("data-local-global",locators[2]+"");
+				this.displayElement.value = this.phoneElement.value;
+				this._changePhoneNumberFromInputNoSelect()
+			}
+		}
+	},
+	_setCountryText: function(countryText){
+		if (this.countryTextElement != null) {
+			if (!this.displayCountryTextNational) {
+				if ((this.displayCountryText == 'true' || this.displayCountryText == 'all') && countryText != null && countryText != 'null') 
+					this.countryTextElement.innerHTML = countryText;
+				else
+					this.countryTextElement.innerHTML = "";
+			} else if (countryText != null && countryText != 'null') {
+				if (this.displayNationalForUser && countryText == this.usersCountry)
+					this.countryTextElement.innerHTML = countryText;
+				else if (!this.displayNationalForUser)
+					this.countryTextElement.innerHTML = countryText;
+				else
+					this.countryTextElement.innerHTML = "";
+				 
+			} else
+				this.countryTextElement.innerHTML = "";
+		}		
+	},
+	
+	_setNewOptionText: function(territoryText, value){
+		if (!territoryText || !value || !this.selectElement)
+			return;
+		
+		var listElementOptions = this.selectElement.options;
+        var newOption =  cel('option');
+        newOption.text = territoryText;
+        newOption.value = value;
+        
+		var countryLocation = -1;
+		for (var i=0; listElementOptions.length > i; i++) {
+			if (listElementOptions[i].text == territoryText) {
+				countryLocation = i;
+				break;
+			}
+		}
+		
+		if (countryLocation >= 0) {
+	        this.selectElement.options[countryLocation].selected = true;
+			return;
+		}
+		var countryLocation = -1;
+		var found = false;
+		for (var i=0; listElementOptions.length > i; i++) {
+			countryLocation = i;
+			if (listElementOptions[i].text > territoryText ||
+listElementOptions[i].text == "Other / Unknown"
+			) {
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+			countryLocation = listElementOptions.length;
+  
+        var saved = [];
+        var i;
+        for (i = 0; i < this.selectElement.options.length; i++) 
+            saved.push(this.selectElement.options[i]);
+        
+        this.selectElement.options.length = 0;
+        for (i = 0; i < countryLocation; i++) 
+        	this.selectElement.options[this.selectElement.options.length] = saved[i];
+        this.selectElement.options[this.selectElement.options.length] = newOption;
+        while (i < saved.length) 
+        	this.selectElement.options[this.selectElement.options.length] = saved[i++];
+        
+        this.selectElement.options[countryLocation].selected = true;
+        var cacheValues = this.selectedCache.split(',');
+        var strippedPhoneNumber = cacheValues[0];
+        this._setSelectedCache(strippedPhoneNumber + "," + this.selectElement.value);
+		
+	},
+	
+	_stripCharacters : function (phoneNumber) {
+return phoneNumber.replace(/\D/g, '');
+	},
+	
+	_setDisplayLocal : function () {
+		this.displayElement.setAttribute("data-national","true");
+	},
+	
+	_setDisplayGlobal : function () {
+		this.displayElement.setAttribute("data-national","false");
+	},
+	
+	_invalidateEntry : function() {
+		this.displayElement.setAttribute("data-valid", "false");
+		this.valid = false;
+		if (this.strict) {
+			this.displayElement.classList.add("ref_invalid");
+			this.displayElement.classList.remove("ref_dynamic");
+		} else {
+			this.displayElement.classList.add("ref_dynamic");
+			this.displayElement.classList.remove("ref_invalid");
+		}
+		if (document.documentElement.getAttribute('data-doctype') === 'true') {
+			this.displayElement.classList.add("form-control");
+		}
+	},
+	_validateEntry: function() {
+		this.displayElement.setAttribute("data-valid", "true");
+		this.valid = true;
+		this.displayElement.classList.remove("ref_invalid", "ref_dynamic");
+		if (document.documentElement.getAttribute('data-doctype') === 'true') {
+			this.displayElement.classList.add("form-control");
+		}
+	},
+	_setSelectedCache : function(value) {
+		this.displayElement.setAttribute("data-selected-cache",value);
+		this.selectedCache = value;
+	},
+    type: 'PhoneNumberE164'
+};
+(function(){
+	function PhoneNumberE164Handler(ref, elem){
+		this.name = ref;
+		this.elem = elem;
+	}
+	PhoneNumberE164Handler.prototype = {
+		setValue: function(value) {
+			this.elem.value = value;
+			onChangePhoneNumberE164('input', this.elem);
+			onChange(this.name);
+		},
+		setReadOnly : function(bool){
+			var country = $('country_' + this.name);
+			var display = $('disp_' + this.name);
+			if (country)
+				country.disabled = bool;
+			if (display)
+				display.disabled = bool;
+			onChangePhoneNumberE164('input', this.elem);
+		}
+	};
+	CachedEvent.after('glideform.initialized', function() {
+		var elems = $$('input[data-type="phone_number_e164"][type="hidden"]');
+		elems.each(function(elem) {
+			var ref = elem.getAttribute('element_ref');
+			var handler = new PhoneNumberE164Handler(ref, elem);
+			if (ref) {
+				g_form.registerHandler(ref, handler);
+			}
+		});
+	});
+})();
+;</script><script>/*! RESOURCE: /scripts/elements/element_color.jsx */
+var ColorElement = Class.create({
+	initialize: function(name){
+		this.name = name;
+		this.documentBody = $(document.body);
+		this.fieldName = $(this.name);
+	},
+	regex: {
+hex : /(^[0-9A-F]{6}$)|(^[0-9A-F]{3}$)/i,
+whiteHex : /(^#(?:[fF]{3}){1,2}$)/i
+	},
+	setValue: function(value, displayValue){
+		this.fieldName.setAttribute("value",value);
+		onChange(this.name);
+		this.changeColor();
+	},
+	changeColor: function(value){
+		if ( typeof value !== "string" ) {
+			this.fieldName.value = this.fieldName.getAttribute("value");
+		}
+		this.colorValue = this.fixColor(this.fieldName.value);
+		this.colorSwatch = $("color_swatch." + this.name);
+		this.convertToRGB(this.colorValue);
+		this.validColor = this.isValid();
+		if ( this.validColor ) {
+			this.colorSwatch.style.backgroundColor = this.rgbColor;
+		} else {
+			this.invalidColor();
+		}
+	},
+	fixColor: function(color) {
+		var hex  = this.regex.hex.test(color);
+		if (hex) {
+			if ( color.substr(0,1) !== '#' ) {
+				return '#' + color;
+			}
+		}
+		return color;
+	},
+	convertToRGB: function(){
+		var testDiv = new Element('div').setStyle({
+			'color': 'white',
+			'display': 'none'
+		});
+		this.documentBody.insert(testDiv);
+		testDiv.setStyle({
+			'color': this.colorValue
+		});
+this.rgbColor = window.getComputedStyle(testDiv).color.replace(/ /g,'');
+		testDiv.remove();
+	},
+	isValid: function(){
+		if ( this.rgbColor != 'rgb(255,255,255)' || this.colorValue == 'white' || this.regex.whiteHex.test(this.colorValue) ) {
+			return true;
+		}
+		return false;
+	},
+	invalidColor: function(){
+		g_form.showErrorBox(this.fieldName, getMessage("Invalid color: {0}").replace("{0}", this.colorValue));
+		this.fieldName.setAttribute("value","");
+		this.colorSwatch.style.backgroundColor = "";
+		$(this.fieldName).up('form').fire('glideform:onchange', {id : this.fieldName, value : ""});
+	},
+	type: "ColorElement",
+	z: null
+});
+(function() {
+	addLoadEvent(function() {
+		var elems = $$('input[data-type="color_swatch"]');
+		elems.each(function(elem, index) {
+			var ref = elem.getAttribute('data-ref');
+			if (ref) {
+				var ceHandler = new ColorElement(ref);
+				g_form.registerHandler(ref, ceHandler);
+			}
+			elem.observe('change', function(evt){
+				onChange(ref);
+				ceHandler.changeColor(ceHandler.fieldName.value);
+			});
+		});
+	});
+})();
+;</script><script>/*! RESOURCE: /scripts/classes/TemplateUtils.jsx */
+function trackTemplateUsage(templateSysId){
+    const GlideAjax = window.GlideAjax;
+    if (!templateSysId || !GlideAjax)
+        return;
+    try {
+        const ga = new GlideAjax('TrackLastUsedTemplateAjax');
+        ga.addParam('sysparm_name', 'trackUsage');
+        ga.addParam('sysparm_template_id', templateSysId);
+        ga.getXMLAnswer(function (response) {
+            if (!response) {
+                console.warn('Failed to track template usage');
+            }
+        });
+    } catch (error) {
+        console.warn('Failed to track template usage', error);
+    }
+}
+;</script><script>/*! RESOURCE: /scripts/classes/GlideTemplateBar.jsx */
+var GlideTemplateBar = Class.create({
+	initialize : function(table) {
+		var self = this;
+		setTimeout(function () {
+			self.init.apply(self, [table]);
+		}, 200);
+	},
+	
+	init: function(table) {
+		this.$toggleButton 	= $j('button[data-type="template-list-overflow-button"]');
+		this.table = table;
+		this.ref = this.$toggleButton.data('ref');
+		if (this.$toggleButton.length < 1) 
+			return;
+		this.$ellipsisButton = $j('button[data-type="template-list-overflow-button"]');
+		this.$container = $j(this.$toggleButton.data('target'));
+		this.$templateListContainer = $j('#templates-list-container');
+		this.$templateList = this.$templateListContainer.find('a:not([data-type="create-new-template"])');
+		this.$templateOverflowContainer = $j('.template_overflow_items');
+		this.$clearSearchFilterInput = $j('span[data-type="clearTemplateFilter"]');
+		this.popoverTabbablesSelector = '#templateOverflowContainer :tabbable, #no_search_results';
+		this.isOpen = false;
+		this.isLoaded = false;
+		this.isUpdating = false;
+		this.popupInitialized = false;
+		this.templateName = null;
+		this.templateSysId = null;
+		this.originalQuery = [];
+		this.returnedTemplateList = [];
+		this.templateArray = [];
+		this.lastTemplateElm = null;
+		this.bindResize();
+		this.update();
+		this.loaded();		
+	},
+	
+	update: function(){
+		this.updateTemplateListContainer();
+		this.hideTemplates();
+		this.updateTemplateList();
+		this.toggleEllipsis();
+	},
+	loaded: function(){
+		this.isLoaded = true;
+		$j('[data-type="template_footer"]').addClass('loaded');
+	},
+	handleClickEvent: function(){
+		if (this.isOpen){
+			this.hideEllipsisPopover();
+		} else {
+			if (!this.popupInitialized) {
+				this.initializeEllipsisPopover();
+			} else {
+				this.showEllipsisPopover();
+			}
+		}
+	},
+	handleHtmlClick: function(e){
+		if ( this.isOpen && !this.$toggleButton.is(e.target) && this.$container.parents('.popover').has($j(e.target)).length == 0 ) {
+			this.hideEllipsisPopover();
+		}
+	},
+	bindResize:function(){
+		$j(window).on('resize', function(e) {
+			if (this.isOpen){
+				this.hideEllipsisPopover();
+			}
+			this.update();
+		}.bind(this));
+	},
+	initializeEllipsisPopover: function(){
+		var self = this;
+		this.$toggleButton.popover({
+			html: true,
+			trigger: 'manual',
+			title: getMessage('All Templates'),
+			content: function(){
+				self.$container.show();
+				return self.$container;
+			},
+			viewport: { selector: 'body', padding: 35 }
+		});
+		this.$toggleButton.data('bs.popover').options.placement = 'top';
+		this.popupInitialized = true;
+		
+		var popover = $j('#templateOverflowContainer').parent().parent();
+		popover.attr('role', 'dialog');
+		popover.attr('aria-label', getMessage('All Templates'));
+		$j('#no_search_results').attr('tabindex','0');
+		this.showEllipsisPopover();
+	},
+	showEllipsisPopover: function(){
+		this.$toggleButton.popover('show');
+		$j('#overflowTemplateSearch').focus();
+		this.isOpen = true;
+		this.$ellipsisButton.attr('aria-expanded', 'true');
+		this.closePopoverOnBlur();
+	},
+	closePopoverOnBlur: function(){
+		var gtb = this;
+		var popoverContainer = $j('#templateOverflowContainer').parent().parent();
+		popoverContainer.css({'outline':'none'});
+		popoverContainer.attr('tabindex', '-1');
+		var tabbables = $j(this.popoverTabbablesSelector);
+		tabbables.bind('blur', function (blurEvent) {
+			setTimeout(function () {
+				var isOut = true;
+				var target = blurEvent.relatedTarget || document.activeElement;
+				if (target === popoverContainer[0] || popoverContainer.has(target).length)
+					isOut = false;
+				if (isOut)
+		    			gtb.hideEllipsisPopover(true);
+	    		}, 10);
+		});
+	},
+	hideEllipsisPopover: function(dontAutoFocus){
+		this.resetFiltering();
+		this.$toggleButton.popover('hide');
+		if (this.isOpen && !dontAutoFocus) {
+			this.$ellipsisButton.focus();
+		}
+		this.isOpen = false;
+		this.$ellipsisButton.attr('aria-expanded', 'false');
+		$j(this.popoverTabbablesSelector).unbind("blur");
+	},
+	openEditTemplateRecordModal: function(sysId){
+		var self = this;
+		var ctm = new GlideModalForm(getMessage('Edit Template'), 'sys_template');
+		self.modal = ctm;
+		ctm.setPreference('sys_table', self.table);
+		ctm.setPreference('sysparm_view', 'template_modal');
+		ctm.setSysID(sysId);
+		ctm.setPreference('sysparm_form_only', 'true');
+		ctm.setPreference('focusTrap', true);
+		ctm.setOnloadCallback(self.onModalLoadCallback.bind(self));
+		ctm.on('closeconfirm', self.onCompletionCallback.bind(self));
+		ctm.render();
+	},
+	openTemplateRecordModal: function(){
+		var fields = g_form.getEditableFields();
+		var self = this;
+		var query = 'table=' + this.table;
+		var templateQuery = this.getTemplateData();
+templateQuery = templateQuery.replace(/\$/g, "$/");
+		var ctm = new GlideModalForm(getMessage('Create New Template'), 'sys_template');
+		ctm.setPreference('sys_table', self.table);
+		ctm.setPreference('sysparm_view', 'template_modal');
+		ctm.setSysID(-1);
+		ctm.setPreference('sysparm_form_only', 'true');
+		ctm.setPreference('sysparm_query', query);
+		ctm.setPreference('sysparm_orig_query', this.originalQuery);
+		ctm.setPreference('sysparm_template_query', templateQuery);
+		ctm.setPreference('sysparm_template_editable', fields.join());
+		ctm.setPreference('focusTrap', true);
+		ctm.setOnloadCallback(self.onModalLoadCallback.bind(self));
+		ctm.on('closeconfirm', self.onCompletionCallback.bind(self));
+		ctm.render();
+	},
+	onCompletionCallback: function(){
+		this.getTemplatesList();
+		this.modal = null;
+	},
+	getTemplatesList: function(){
+		this.isUpdating = true;
+		var ga = new GlideAjax('GetTemplatesList');
+		ga.addParam('sysparm_table_name', this.table);
+		ga.addParam('sysparm_template_bar_only', 'true');
+		ga.addParam('sysparm_name', 'returnList');
+		ga.getXML(parseUpdateList.bind(this));
+		function parseUpdateList(response) {
+			var xml = response.responseXML;
+			this.returnedTemplateList = [];
+			var templates = xml.getElementsByTagName('template');
+			for (var i = 0; i< templates.length; i++){
+				var item = templates[i];
+				var show = item.getAttribute('show_on_template_bar');
+				if (show == true || show === ""){
+					this.returnedTemplateList.push({
+						label : item.getAttribute('name'),
+						value : item.getAttribute('sys_id'),
+						application: item.getAttribute("application")
+					});
+				}
+			}
+			this.update();
+			this.updateTemplatePopover();
+		}
+	},
+	updateTemplateListContainer: function(){
+		if (!this.isUpdating){
+			return;
+		}
+		if (this.returnedTemplateList.length > 0){
+			this._renderTemplateList();
+		} else {
+			this._renderEmptyList();
+		}
+	},
+	_renderTemplateList: function(){
+var html = ['<b>' + getMessage('Templates') + ':&nbsp;</b>'];
+		var i = 0;
+		var templateListLength = this.returnedTemplateList.length;
+		html.push('<ul id="templates-list-items">');
+		
+		while (templateListLength > i){
+			html.push(this.TEMPLATE_ITEM_TEMPLATE.evaluate(this.returnedTemplateList[i]));
+			i++;
+		}
+		
+html.push('</ul>');
+		this.$templateListContainer.html(html.join(''));
+		this.isUpdating = false;
+	},
+	_renderEmptyList: function(){
+		var html = [getMessage("No templates are available"),
+		'<ul id="templates-list-items">',
+		'<li class="templates-list-item">',
+		'<a data-type="create-new-template" href="javascript:void(0);" role="button" ',
+		'data-ref="' + this.ref + '"',
+'title="' + getMessage("Create New Template") + '">' + getMessage("Create a new one?") + '</a>',
+'</li>',
+'</ul>']
+		this.$templateListContainer.html(html.join(' '));
+		this.isUpdating = false;
+	},
+	onModalLoadCallback: function(){
+		this.iframeForm = this.getIframeForm();
+		$j(this.iframeForm).parents('html').removeClass('templates');
+	},
+	getTemplateData: function(){
+		this.originalQuery = [];
+		var formElems = g_form.getEditableFields();
+		var query = formElems.filter(function(elem){
+			var value = g_form.getValue(elem);
+			return !!(value !== '' && value !== null);
+		});
+		for(var i=0 ; i < query.length; i++ ) {
+			var originalVal = g_form.getValue('sys_original.' + this.table + '.' + query[i]);
+			if (originalVal == g_form.getValue(query[i])){
+				this.originalQuery.push(query[i] + '=' + g_form.getValue(query[i]));
+			}
+		}
+		query = query.map(function(elem){
+			var elementValue = g_form.getValue(elem);
+elementValue = elementValue.replace(/\^/g, '^^');
+			return elem + '=' + elementValue + '^';
+		});
+		query = query.sort().join('');
+		return query.substring(0, query.length - 1);
+	},
+	applyTemplate: function(val, name){
+		g_form.removeAllDecorations();
+		this.templateName = name;
+		this.templateSysId = val;
+		var ga = new GlideAjax('AjaxClientHelper');
+		ga.addParam('sysparm_name','getValues');
+		ga.addParam('sysparm_sys_id', val);
+		ga.addParam('sysparm_current_table_name', g_form.getTableName());
+		ga.getXML(this._applyTemplateResponse.bind(this));
+	},
+	_applyTemplateResponse: function(response){
+		if (!response || !response.responseXML)
+			return;
+		this.templateResponse = response.responseXML;
+		this.applyRecord();
+	},
+	applyRecord: function() {
+		this.templateModifiedFields = {};
+		this.alert_html = [];
+		this.templateErrors = 0;
+		this.omittedFormElements = [];
+		this.haveFailedApplyingTemplate = false;
+		this.pluralizedErrorMessage = ' conflicts';
+		this._getTemplateResponseItems();
+		this.generateAlerts();
+		this.showAlert();
+		this.focusAlert();
+		this.setModifiedFields();
+		if (!this.haveFailedApplyingTemplate)
+			trackTemplateUsage(this.templateSysId);
+	},
+	_getTemplateResponseItems: function() {
+		var items = this.templateResponse.getElementsByTagName('item');
+		var reduceItems = Array.prototype.reduce.bind(items);
+		var itemLibrary = reduceItems(function(library, item) {
+			item.getAttribute('dependent') ? library[1].push(item) : library[0].push(item);
+			return library;
+		}, [[], []]);
+		this.templateResponseItems = itemLibrary[0].concat(itemLibrary[1]);
+		this.templateDependentReponseItems = itemLibrary[1];
+	},
+	generateAlerts: function() {
+		for (var i = 0; i < this.templateDependentReponseItems.length; i++) {
+			var item = this.templateDependentReponseItems[i];
+			var name = item.getAttribute('name');
+			g_form.setTemplateValue(name, "");
+		}
+		for (var i = 0; i < this.templateResponseItems.length; i++) {
+			var item = this.templateResponseItems[i];
+			var name = item.getAttribute('name');
+			var displayValue = null;
+			if (!this._checkIfReadOnly(name)) {
+				var status = this.applyItem(name, item.getAttribute('value'), item.getAttribute('rawDisplayVal'));
+				if (status && status.success === false)
+					this.errorAlert(item);
+				else {
+					this.pushToModifiedFieldsObject(name);
+					displayValue = this.getDisplayValue(name, item);
+					this.standardAlert(displayValue, item);
+				}
+			} else
+				this.errorAlert(item);
+		}
+		if (this.templateErrors != 0 && this.templateErrors == i)
+			this.haveFailedApplyingTemplate = true;
+		if (this.templateErrors == 1)
+			this.pluralizedErrorMessage = ' conflict';
+ 		if (this.omittedFormElements.length > 0)
+			this._addOmittedFormElementsToAlert();
+	},
+	_checkIfReadOnly: function(name){
+		var control = g_form.getControl(name);
+		var ed = g_form.getGlideUIElement(name);
+		var labelControl = g_form.getControl(name + '_label');
+		if (g_form.isReadOnly('', control))
+			return true;
+		if (labelControl && ed.type === "reference" && g_form.isReadOnly('', labelControl))
+			return true;
+		if (gel('sys_readonly.' + this.table + '.' + name) )
+			return true;
+		return false;
+	},
+	standardAlert: function(displayValue, item) {
+		if (displayValue)
+displayValue = displayValue.replace(/<(?:.|\n)*?>/gm, '');
+		if (displayValue && displayValue.length > 254) {
+			displayValue = displayValue.substr(0, 254) + '...';
+		}
+		var name = item.getAttribute('name');
+		var label =  g_form.getLabel(name);
+		this.alert_html.push(this.ALERT_ITEM_TEMPLATE.evaluate({
+			name: $j(label).text(),
+			value: displayValue
+		}));
+	},
+	errorAlert: function(item) {
+		var error;
+		var name = item.getAttribute('name');
+		var label = item.getAttribute('label');
+		if (g_form.getElement(name)){
+			error = g_form.getLabel(item.getAttribute('name')).innerText;
+			this.alert_html.unshift(this.ERROR_ITEM_TEMPLATE.evaluate({
+				error: error
+			}));
+		} else {
+			this.omittedFormElements.push(label);
+		}
+		this.templateErrors++;
+	},
+	applyItem: function(element, value, rawDisplayValue) {
+		if (value == null || value == 'null'){
+			return;
+		}
+		var ed = g_form.getGlideUIElement(element);
+		if (ed && ed.type == 'glide_encrypted') {
+			return g_form.setTemplateValue(element, value, value);
+		} else if (ed && ed.type == 'currency')
+			return g_form.setTemplateValue(element, value, rawDisplayValue);
+		else
+			return g_form.setTemplateValue(element, value);
+	},
+	pushToModifiedFieldsObject: function(element){
+		var fieldName = this.table + '.' + element;
+		this.templateModifiedFields[fieldName] = true;
+	},
+	setModifiedFields: function(){
+		if(this.templateModifiedFields){
+			$j.extend(g_form.modifiedFields, this.templateModifiedFields);
+			g_form.modified = true;
+			var uniqueValue = g_form.getUniqueValue();
+			CustomEvent.fireAll('form.isModified', {uniqueValue: uniqueValue, isModified: g_form.modified, iframeElId: window.frameElement ? window.frameElement.id : null});
+		}
+	},
+	cleanModifiedFields: function(){
+		var fields = Object.keys(this.templateModifiedFields);
+		for (var i=0; i < fields.length; i++) {
+			if (g_form.modifiedFields[fields[i]])
+				delete g_form.modifiedFields[fields[i]];
+			if (Object.keys(g_form.modifiedFields).length == 0){
+				g_form.modified = false;
+			}
+		}
+	},
+	toggleEllipsis: function(){
+		if ( this.templateArray.length > 0 ) {
+			this.$ellipsisButton.removeClass('invisible');
+		} else {
+			this.$ellipsisButton.addClass('invisible');
+		}
+	},
+	showAlert:function(){
+		this.alert_html = this.alert_html.join('');
+		var templateValues = {
+			name: this.templateName,
+			alerts : this.alert_html,
+			errorCount: this.templateErrors,
+			errorText: this.pluralizedErrorMessage
+		};
+		var gui = new GlideUI();
+		if(this.templateErrors > 0) {
+			if (this.haveFailedApplyingTemplate){
+				gui.addOutputMessage({
+					'msg': this.ERROR_TEMPLATE.evaluate(templateValues),
+					'type': 'error'
+				});
+			} else {
+				gui.addOutputMessage({
+					'msg': this.WARN_TEMPLATE.evaluate(templateValues),
+					'type': 'warning'
+				});
+			}
+		} else {
+			if (Object.keys(this.templateModifiedFields).length === 0) {
+				gui.addOutputMessage({
+					'msg': this.TRY_APPLY_EMPTY_TEMPLATE.evaluate(templateValues),
+					'type': 'error'
+				});
+				this.haveFailedApplyingTemplate = true;
+			}
+			else {
+				gui.addOutputMessage({
+					'msg': this.ALERT_TEMPLATE.evaluate(templateValues),
+				});
+			}
+		}
+		this.alert_html = [];
+	},
+	focusAlert: function() {
+		$j('a[data-type="template_alert_toggle"]:last').focus();
+		$j('#close-messages-btn:not(.template-bound)').addClass('template-bound').on('click', this.focusLastTemplateClicked.bind(this));
+	},
+	focusLastTemplateClicked: function() {
+		if (this.lastTemplateElm) {
+			this.lastTemplateElm.focus();
+			this.lastTemplateElm = null;
+		}
+		$j('#close-messages-btn.template-bound').removeClass('template-bound').off('click');
+	},
+	setLastTemplateSelected: function(elm) {
+		this.lastTemplateElm = this.isOpen ? this.$toggleButton : $j(elm);
+	},
+	getDisplayValue: function(name, item){
+		var optionControl = g_form.getOptionControl(name);
+		if (optionControl) {
+			return optionControl.options[optionControl.selectedIndex].text;
+		}
+		if ( item.getAttribute('value') === '' ) {
+			return 'None';
+		}
+		for (var i=0; i<this.templateResponseItems.length; i++){
+			if (this.templateResponseItems[i].getAttribute("name") == name && this.templateResponseItems[i].getAttribute("displayVal") != "undefined")
+				return this.templateResponseItems[i].getAttribute("displayVal");
+		}
+		return item.getAttribute('value');
+	},
+	getIframeForm:function(){
+		var iframe =  $('dialog_frame');
+		if (!iframe){
+			return;
+		}
+		var iframeDocument = iframe.contentDocument ? iframe.contentDocument : iframe.contentWindow.document;
+		this.iframeWindow = iframe.contentWindow;
+		return iframeDocument.getElementById('sys_template.do');
+	},
+	updateTemplateList: function(){
+		this.$templateList = this.$templateListContainer.find('a:not([data-type="create-new-template"])');
+		this.templateArray = this._createTemplateArray();
+	},
+	hideTemplates: function(){
+		var parentElem = $j('#templates-list-container');
+		var listItems = parentElem.find('.templates-list-item');
+		var parentElemWidth = parentElem.innerWidth();
+var totalWidth = parentElem.children('b').width();
+		var extraPadding = 20;
+		if(NOW.isUsingPolaris) {
+			extraPadding = 0;
+		}
+		for (var i = 0; i < listItems.length; i++){
+			var elem = $j(listItems[i]);
+			totalWidth += elem.outerWidth() + extraPadding;
+			if (totalWidth > parentElemWidth){
+				elem
+					.removeClass('visible')
+					.nextAll()
+					.removeClass('visible');
+				break;
+			}
+			$j(elem).addClass('visible');
+		}
+	},
+	updateTemplatePopover: function(){
+		var html = [];
+		var overFlowTemplate;
+		var canWriteAccess = (this.$container[0].getAttribute("canWrite") == "true");
+		var currentScope = getPreference("apps.current_app") || "global";
+		for (var i = 0; i < this.templateArray.length; i++){
+			if (canWriteAccess && this.templateArray[i].application == currentScope)
+				overFlowTemplate = this.OVERFLOW_TEMPLATE_TEMPLATE;
+			else
+				overFlowTemplate = this.OVERFLOW_TEMPLATE_TEMPLATE_READ_ONLY;
+			html.push(overFlowTemplate.evaluate(this.templateArray[i]));
+		}
+		this.$templateOverflowContainer.html(html.join(''));
+	},
+	toggleAlerts: function(detailLink){
+		var templateAlertDetails = $j(detailLink).siblings('ul.template_details');
+		templateAlertDetails.toggleClass('visible');
+		var $showLink = $j('#see_detail_link');
+		var $hideLink = $j('#hide_detail_link');
+		if ((templateAlertDetails[0].className).indexOf("visible") > -1){
+			detailLink.setAttribute("aria-expanded", "true");
+			$showLink.addClass('hidden');
+			$hideLink.removeClass('hidden');
+			templateAlertDetails.bind('transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd', function(){
+				if ((templateAlertDetails[0].className).indexOf('visible') > -1)
+					templateAlertDetails[0].setAttribute('style', 'max-height:' + templateAlertDetails.outerHeight() + 'px')
+			});
+		} else{
+			detailLink.setAttribute("aria-expanded", "false");
+			$hideLink.addClass('hidden');
+			$showLink.removeClass('hidden');
+			templateAlertDetails[0].removeAttribute('style');
+		}
+	},
+	undoTemplate: function(){
+		var fields = Object.keys(this.templateModifiedFields);
+		for (var i=0; i<fields.length; i++) {
+			var modifiedField = fields[i];
+			var originalField = 'sys_original.' + fields[i];
+			var displayField = 'sys_display.original.' + fields[i];
+			if (g_form.getValue(originalField) != g_form.getValue(modifiedField)) {
+				g_form.setValue(modifiedField, g_form.getValue(originalField), g_form.getValue(displayField));
+			}
+		}
+		this.cleanModifiedFields();
+		GlideUI.get().clearOutputMessages();
+		g_form.removeAllDecorations();
+		this.focusLastTemplateClicked();
+	},
+	_addOmittedFormElementsToAlert: function(){
+		var elements = [];
+		for(var i = 0; i < this.omittedFormElements.length; i++){
+			if (this.omittedFormElements[i] !== null)
+elements.push("<li><b>" + this.omittedFormElements[i] + "</b></li>");
+		}
+		this.alert_html.unshift(this.OMITTED_FORM_ELEMENT_ALERT.evaluate({
+			count: this.omittedFormElements.length,
+			elements: elements.join(''),
+			item: (this.omittedFormElements.length > 1) ? 'items are' : 'item is'
+		}));
+	},
+	_createTemplateArray: function(){
+		return $j.map(this.$templateList, function(i){
+			return {
+				'name': $j(i).text(),
+				'value': $j(i).attr('data-ref'),
+				'application': $j(i).attr('data-application')
+			};
+		});
+	},
+	filterOverflowTemplates: function(searchTerm){
+		if (!searchTerm){
+			this._removeFilteringClasses();
+		} else {
+			this.$templateOverflowContainer
+				.addClass('filtered')
+				.siblings('.input-group-transparent').addClass('filtered');
+			this.$clearSearchFilterInput.attr('tabindex', '0');
+			this._matchElements(searchTerm);
+		}
+	},
+	_matchElements:function(searchTerm){
+		var parentElem = this.$templateOverflowContainer;
+		var listItems = parentElem.find('a:not(.template-edit)');
+		var noMatch = true;
+		var textOfItem;
+		listItems.each(function(index, item){
+			textOfItem = $j(item).text();
+			if (textOfItem && textOfItem.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1){
+				noMatch = false;
+				$j(item).parent().addClass('match');
+			} else {
+				$j(item).parent().removeClass('match');
+			}
+		});
+		$j('#no_search_results').toggle(noMatch);
+	},
+	resetFiltering: function(){
+		this._clearFilterInput();
+		this._removeFilteringClasses();
+		$j('#no_search_results').hide();
+	},
+	_removeFilteringClasses: function(){
+		$j(this.$overflowTemplates).each(function(i, elem){
+			$j(elem).parent().removeClass('match');
+		});
+		this.$templateOverflowContainer
+			.removeClass('filtered')
+			.siblings('.input-group-transparent').removeClass('filtered');
+		this.$clearSearchFilterInput.attr('tabindex', '-1');
+		$j('#no_search_results').hide();
+	},
+	_clearFilterInput: function(){
+		$j('#overflowTemplateSearch').val('');
+	},
+	type: 'GlideTemplateBar',
+	z: null
+});
+GlideTemplateBar.prototype.ALERT_TEMPLATE = new Template(
+getMessage('#{HTML:name} Template Applied') + '<br /><br />' +
+'<a href="#" role="button" aria-controls="alert_template_details" aria-expanded="false" data-type="template_alert_toggle">' + getMessage('See Details') + '</a>' +
+	'<ul id="alert_template_details" class="template_details">' +
+	'#{alerts}' +
+'<li class="row"><a href="#" role="button" data-type="template_undo_button">' + getMessage('Undo Changes') + '</a></li></ul>'
+);
+GlideTemplateBar.prototype.WARN_TEMPLATE = new Template(
+getMessage('#{HTML:name} Template Applied with #{errorCount} #{errorText}') + '<br /><br />' +
+'<a href="#" role="button" aria-controls="warn_template_details" aria-expanded="false" data-type="template_alert_toggle">' + getMessage('See Details') + '</a>' +
+	'<ul id="warn_template_details" class="template_details">' +
+		'#{alerts}' +
+'<li class="row"><a href="#" role="button" data-type="template_undo_button">' + getMessage('Undo Changes') + '</a></li></ul>'
+);
+GlideTemplateBar.prototype.ERROR_TEMPLATE = new Template(
+getMessage('#{HTML:name} Template not Applied') + ' <br /><br />' +
+'<a href="#" role="button" aria-controls="error_template_details" aria-expanded="false" data-type="template_alert_toggle">' + getMessage('See Details') + '</a>' +
+'<ul id="error_template_details" class="template_details">#{alerts}</ul>'
+);
+GlideTemplateBar.prototype.TRY_APPLY_EMPTY_TEMPLATE = new Template(
+	getMessage('#{HTML:name} is currently empty and hasn\'t been applied to the record yet.')
+);
+GlideTemplateBar.prototype.TEMPLATE_ITEM_TEMPLATE = new Template(
+	'<li class="templates-list-item">' + 
+'<a href="#" role="button" class="template-item" data-type="apply-template" data-ref="#{HTML:value}" data-application="#{application}">#{HTML:label}</a>' +
+'</li>'
+);
+GlideTemplateBar.prototype.OVERFLOW_TEMPLATE_TEMPLATE = new Template(
+	'<li class="row">' +
+'<a href="#" role="button" data-type="apply-template" data-ref="#{HTML:value}">#{HTML:name}</a>' +
+'<a class="template-edit" href="#" role="button" data-type="edit-template" data-ref="#{HTML:value}">' + getMessage("Edit") + '</a>' +
+'</li>'
+);
+GlideTemplateBar.prototype.OVERFLOW_TEMPLATE_TEMPLATE_READ_ONLY = new Template(
+	'<li class="row">' +
+'<a href="#" role="button" data-type="apply-template" data-ref="#{HTML:value}">#{HTML:name}</a>' +
+'</li>'
+);
+GlideTemplateBar.prototype.ALERT_ITEM_TEMPLATE = new Template(
+	'<li class="row">' +
+getMessage('Set <b>#{HTML:name}</b> to <b>#{HTML:value}</b>') +
+'</li>'
+);
+GlideTemplateBar.prototype.ERROR_ITEM_TEMPLATE = new Template(
+	'<li class="row">' +
+'<div class="icon-alert" /> ' +
+getMessage('Unable to update field') + '"<b>#{HTML:error}</b>"' +
+'</li>'
+);
+GlideTemplateBar.prototype.OMITTED_FORM_ELEMENT_ALERT = new Template(
+	'<li class="row">' +
+'<div class="icon-alert" /> ' +
+'<b>#{count}</b>' + getMessage('#{item} not present on this form') +
+		'<ol>' +
+			'#{elements}' +
+'</ol>' +
+'</li>'
+);
+(function() {
+	addLateLoadEvent(function () {
+		var elem = $j('[data-type="template_footer"]');
+		var table = elem.data('ref');
+		var gtb = new GlideTemplateBar(table);
+		function createNewTemplate(evt) {
+			evt.preventDefault();
+			gtb.hideEllipsisPopover();
+			gtb.openTemplateRecordModal();
+		}
+		function prepareTemplate(evt, elem) {
+			evt.preventDefault();
+			var val = elem.getAttribute('data-ref');
+			var name = $j(elem).text();
+			gtb.setLastTemplateSelected(elem);
+			gtb.hideEllipsisPopover();
+			gtb.applyTemplate(val, name);
+		}
+		document.body.on('click', 'a[data-type="apply-template"]', function(evt, elem){
+			prepareTemplate(evt, elem);
+		});
+		document.body.on('keydown', 'a[data-type="apply-template"]', function(evt, elem){
+			if (evt.keyCode === 32) {
+				prepareTemplate(evt, elem);
+			}
+		});
+		document.body.on('click', 'a[data-type="edit-template"]', function(evt, elem){
+			evt.preventDefault();
+			var val = elem.getAttribute('data-ref');
+			gtb.hideEllipsisPopover();
+			gtb.openEditTemplateRecordModal(val);
+		});
+		document.body.on('click', 'button[data-type="template-list-overflow-button"]', function(evt){
+			evt.preventDefault();
+			gtb.handleClickEvent();
+		});
+		document.body.on('click', '[data-type="create-new-template"]', function (evt) {
+			createNewTemplate(evt);
+		});
+		document.body.on('keydown', '[data-type="create-new-template"]', function (evt) {
+			if (evt.keyCode == 32) {
+				createNewTemplate(evt);
+			}
+		});
+		document.body.on('click', 'button[data-type="disable-template-bar"]', function(evt){
+			evt.preventDefault();
+			CustomEvent.fire('templateToggle', false);
+		});
+		document.body.on('click', 'a[data-type="template_alert_toggle"]', function(evt, elem){
+			gtb.toggleAlerts(elem);
+		});
+		document.body.on('keydown', 'a[data-type="template_alert_toggle"]', function(evt, elem){
+			if (evt.keyCode === 32) {
+				evt.preventDefault();
+				gtb.toggleAlerts(elem);
+			}
+		});
+		document.body.on('click', 'a[data-type="template_undo_button"]', function(evt){
+			gtb.undoTemplate();
+		});
+		document.body.on('keydown', 'a[data-type="template_undo_button"]', function(evt, elem){
+			if (evt.keyCode === 32) {
+				evt.preventDefault();
+				gtb.undoTemplate();
+			}
+		});
+		document.body.on('click', 'button[data-type="clear-template-modal"]', function(evt, elem){
+			evt.preventDefault();
+			if (!gtb.iframeWindow){
+				return;
+			}
+			gtb.iframeWindow.g_form.setValue('template', '');
+		});
+		document.body.on('click', 'button[data-type="save-template-modal"]', function(evt, elem){
+			evt.preventDefault();
+			if (!gtb.iframeForm){
+				return;
+			}
+			gsftSubmit(elem, gtb.iframeForm);
+		});
+		document.body.on('click', 'span[data-type="clearTemplateFilter"]', function(evt){
+			evt.preventDefault();
+			gtb.resetFiltering();
+			$j('#overflowTemplateSearch').focus();
+		});
+		$j('[data-type="template_footer"]').on({
+			'keyup': function(){
+				var val = $j('#overflowTemplateSearch').val();
+				gtb.filterOverflowTemplates(val);
+			}
+		}, '#overflowTemplateSearch');
+		$j('html').on('click', function(e){
+			gtb.handleHtmlClick(e);
+		});
+		
+		CustomEvent.on('closeTemplateModal', function(){
+			var gtm = new GlideModal().get('sys_template');
+			if (gtm)
+				gtm.destroy();
+		});
+	});
+})();
+;</script><script type="text/javascript" src="/scripts/classes/timeAgo.jsx?v=06-25-2025_1836"></script><script type="text/javascript" src="/scripts/js_includes_ui16_form.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><script type="text/javascript" src="/scripts/js_includes_form_presence.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><script type="text/javascript" src="/scripts/classes/doctype/js_includes_listv2_doctype.jsx?v=06-25-2025_1836&amp;lp=Wed_Jul_09_05_47_34_PDT_2025&amp;c=10_151"></script><script>NOW.xperf.lastDoctypeEnd = NOW.xperf.now();</script><span style="display:none" data-comments="db_context_menu_script"></span><script>NOW.xperf.dbContextBegin = NOW.xperf.now();</script><script>NOW.xperf.dbContextEnd = NOW.xperf.now();</script><span style="display:none" data-comments="db_context_menu_script"></span><script data-description="MessagesTag">(function() {
+ var messages = new GwtMessage();
+messages.set('Timing Type');
+messages.set('Time Range');
+messages.set('Total Time');
+messages.set('{0}ms');
+messages.set('{0} ms');
+messages.set('Browser response time');
+messages.set('Server');
+messages.set('Timing details');
+messages.set('{0} of {1} {2}: {3}');
+messages.set('{0} of {1} Other: {2}');
+messages.set('{0} of {1} {2}: {3}');
+messages.set('Show Timing Breakdown');
+messages.set('Browser timing detail');
+messages.set('Time');
+messages.set('Other');
+messages.set('Timing details breakdown');
+messages.set('Response time(ms): {0}');
+messages.set('Network: {0}');
+messages.set('Network: {0}ms');
+messages.set('Server: {0}');
+messages.set('Server: {0}ms');
+messages.set('Browser: {0}');
+messages.set('Browser: {0}ms');
+messages.set('Response time','Response Time');
+messages.set('Close');
+messages.set('Cache/DNS/TCP');
+messages.set('DOM Processing');
+messages.set('Script Load/Parse');
+messages.set('CSS and JS Parse');
+messages.set('Form Sections');
+messages.set('UI Policy - On Load');
+messages.set('Client Scripts - On Load');
+messages.set('Client Scripts - On Change (initial load)');
+messages.set('Browser processing before onload');
+messages.set('DOMContentLoaded to LoadEventEnd');
+messages.set('addLoadEvent functions');
+messages.set('Related Lists');
+messages.set('Related Lists (sync)');
+messages.set('Related Lists (async)');
+messages.set('onLoad');
+messages.set('Unload');
+})()</script><script type="text/javascript">var g_serverTime = parseInt("746") + parseInt("0");
+            var g_logClientViewRoles = "";
+
+			// do not do this for the navigation menu
+            if (window.name != 'gsft_nav') {
+				 addAfterPageLoadedEvent(function() {
+					 if (window.performance)
+						setTimeGraph();
+					 else 
+						firePageTimer();
+				 });
+			 }
+			 
+			function setTimeGraph() {
+				if (window.performance.timing.loadEventEnd > 0)
+			 		firePageTimer();
+			 	else 
+			 		setTimeout(setTimeGraph, 300);
+			 }
+			 
+			function firePageTimer() {
+				 if (window.performance && performance.timing.requestStart != performance.timing.responseStart) {
+				 	var p = performance.timing;
+
+				 	CustomEvent.fire('page_timing', { name: 'SERV', ms: p.responseEnd - p.requestStart});
+				 	CustomEvent.fire('page_timing', { name: 'REND', ms: (p.loadEventEnd - p.responseEnd) });
+				 	CustomEvent.fire('page_timing_network', { name: 'NETW', ms: (p.responseEnd - p.navigationStart) });
+				 } else {
+				    CustomEvent.fire('page_timing', { name: 'SERV', ms: g_serverTime });
+					CustomEvent.fire('page_timing', { name: 'REND', startTime: g_loadTime });
+					CustomEvent.fire('page_timing_network', { name: 'NETW', loadTime: g_loadTime });
+				 }CustomEvent.fire('page_timing_show', {
+						isFixed: '', 
+						show: '' 
+					 });var o = {};
+	      o.types = {};o.types['SECT'] = true;o.types['RLV2'] = true;o.types['UIOL'] = true;o.types['CSOL'] = true;
+	
+	      o.transaction_id = '8dd1c7f8c3f66a10ed4bd50d05013164';
+	      o.table_name = 'u_test_table';
+	      o.form_name = 'sys_form_template';
+	      o.view_id = 'Default view';
+	      o.logged_in = true;
+	      o.win = window;
+	      CustomEvent.fire('page_timing_client', o);}
+			 
+            // The following line is used to set the time when we start requesting a new page
+            Event.observe(window, 'beforeunload', function() {
+				new CookieJar({sameSite: 'strict'}).put('g_startTime', new Date().getTime());
+                CustomEvent.fireTop('request_start', document);
+            });
+
+            // simple pages fire this (stats.do, etc.)
+            CustomEvent.observe('simple_page.unload', function() {
+				new CookieJar({sameSite: 'strict'}).put('g_startTime', new Date().getTime());
+            }); 
+
+            // indicate we have completed the request (used by RequestManager.js for cancel widget)
+            addLoadEvent(function() {
+            	CustomEvent.fireTop("request_complete", window.location);
+            });</script><script data-description="MessagesTag">(function() {
+ var messages = new GwtMessage();
+messages.set('about a year');
+messages.set('(empty)');
+messages.set('a day,%d days');
+messages.set('%d from now');
+messages.set('%d months','%dmo');
+messages.set('%d days','%dd');
+messages.set('just now');
+messages.set('less than a minute');
+messages.set('Go to');
+messages.set('%d minutes','%dm');
+messages.set('about an hour');
+messages.set('about a minute','%dm');
+messages.set('--None--');
+messages.set('about %d hours','%dh');
+messages.set('Search');
+messages.set('about a month');
+messages.set('%d years','%dy');
+messages.set('a day');
+messages.set('%d ago');
+messages.set('Attachments are not allowed');
+})()</script><script type="text/javascript" src="/scripts/doctype/z_last_include.jsx?v=06-25-2025_1836"></script></body><script type="text/html" id="popup_template"><div class="popup popup_form" style=""><iframe src="$src" style=""></iframe></div></script></html>

@@ -2,7 +2,9 @@ package mock.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +19,10 @@ public class FileReaderService {
     private static final Logger log = LoggerFactory.getLogger(FileReaderService.class);
 
     private final ObjectMapper objectMapper;
+
+    @Inject
+    @ConfigProperty(name = "app.outbox.dir")
+    String outboxDir;
 
     public FileReaderService(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
@@ -42,7 +48,7 @@ public class FileReaderService {
     }
 
     private Path getPathToDB() {
-        return Paths.get("db");
+        return Paths.get(outboxDir);
     }
 
     public String readFileAsString(String filename) throws IOException {

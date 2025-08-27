@@ -26,7 +26,8 @@ public class EchoController {
                               @Context UriInfo uri,
                               @Context SecurityContext sec,
                               byte[] body) {
-        return echoService.doEcho(headers, uri, sec, body)
+        long st = System.currentTimeMillis();
+        return echoService.doEcho(headers, uri, sec, body, st)
                 .runSubscriptionOn(Infrastructure.getDefaultWorkerPool());
     }
 }

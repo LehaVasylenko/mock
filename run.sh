@@ -8,6 +8,7 @@ LOG_DIR="logs"
 RUN_DIR="run"
 LOG_FILE="${LOG_DIR}/${APP_NAME}.out"
 PID_FILE="${RUN_DIR}/${APP_NAME}.pid"
+JAVA_OPTS="-XX:+UseStringDeduplication -Xms256m -Xmx512m"
 
 # OUTBOX_DIR: можно задать в окружении перед запуском,
 # по умолчанию — папка ./db в корне проекта
@@ -100,7 +101,7 @@ start_app() {
 
   # Пробросим системное свойство в Java:
   # -Dapp.outbox.dir=<абсолютный путь к ./db или OUTBOX_DIR из окружения>
-  nohup java \
+  nohup java $JAVA_OPTS \
     -Dapp.outbox.dir="$OUTBOX_DIR" \
     -jar "$JAR_PATH" >> "$LOG_FILE" 2>&1 &
 

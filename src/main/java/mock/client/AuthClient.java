@@ -7,7 +7,7 @@ import mock.model.automation.RequestBody;
 import mock.model.automation.ResponseBody;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@RegisterRestClient(configKey = "v6")
+@RegisterRestClient(baseUri = "https://v6u1.iconductcloud.com:4433/api")
 public interface AuthClient {
 
     @POST
@@ -19,5 +19,5 @@ public interface AuthClient {
     @GET
     @Path("/users/organizations-by-user-name/{email}")
     @Produces(MediaType.APPLICATION_JSON)
-    Uni<String> getUserNameByEmail(@QueryParam("email") String email);
+    Uni<String> getUserNameByEmail(@PathParam("email") String email);
 }

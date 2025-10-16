@@ -4,7 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class DelayConfig {
-    private volatile long delayMillis = 0;
+    private volatile long delayMillis = 5000;
 
     public long getDelay() {
         return delayMillis;

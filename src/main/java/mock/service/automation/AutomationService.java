@@ -13,6 +13,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
+
 @ApplicationScoped
 public class AutomationService {
     private static final Logger log = LoggerFactory.getLogger(AutomationService.class);
@@ -36,6 +38,8 @@ public class AutomationService {
 
     @Scheduled(cron = "0 */1 * * * ?")
     void schedule() {
+        int h = LocalDateTime.now().getHour();
+        if (h > 19 || h < 8) return;
         if (this.expiresAt > System.currentTimeMillis()) {
             authClient.getUserNameByEmail(requestBody.userName()).subscribe().with(
                     log::info,

@@ -54,7 +54,7 @@ public class EchoService {
             Map<String, Object> out = new LinkedHashMap<>();
             out.put("method", "POST");
             out.put("time", LocalDateTime.now());
-            out.put("user", sec.getUserPrincipal().getName());
+            out.put("user", "Crocodillo");
             out.put("path", uri.getPath());
             out.put("absoluteUri", uri.getRequestUri().toString());
             out.put("query", uri.getQueryParameters());

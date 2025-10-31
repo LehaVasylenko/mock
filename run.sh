@@ -52,10 +52,12 @@ write_env_and_unit() {
 
   echo "[env] ${ENV_FILE}"
   sudo install -d -m0755 "${ENV_DIR}"
-  sudo tee "${ENV_FILE}" >/dev/null <<'EOF'
-JAVA_OPTS=""
-APP_OPTS=""
+  sudo tee "${ENV_FILE}" >/dev/null <<EOF
+  JAVA_OPTS="${JAVA_OPTS}"
+  APP_OPTS="${APP_OPTS:-}"
 EOF
+  sudo chmod 0644 "${ENV_FILE}"
+
   # подставим твои JAVA_OPTS, если заданы вверху
   sudo sed -i "s|^JAVA_OPTS=.*|JAVA_OPTS=\"'"${JAVA_OPTS}"'\"|" "${ENV_FILE}"
 

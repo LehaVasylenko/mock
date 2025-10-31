@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-### === Настройки (минимум) ===
-APP_NAME="mock"                       # имя сервиса
-BRANCH="main"                           # какую ветку тянуть
-JAVA_OPTS="-XX:+UseStringDeduplication -Xms256m -Xmx512m"
+### === Настройки ===
+APP_NAME="mock"                                   # имя сервиса
+BRANCH="main"                                     # ветка
+JAVA_OPTS='-XX:+UseStringDeduplication -Xms256m -Xmx512m'
 
-### === Вспомогательные пути ===
+### === Пути ===
 RUN_USER="$(id -un)"
 REPO_DIR="$(pwd)"
 WORKDIR="${REPO_DIR}/target/quarkus-app"
@@ -29,9 +29,11 @@ start_ssh_agent_if_needed() {
 
 git_pull() {
   [[ -d .git ]] || { echo "[git] нет .git — запусти из корня репозитория"; exit 1; }
-  echo "[git] fetch/pull ${BRANCH}..."
+  echo "[git] updating ${BRANCH}..."
   git fetch origin "${BRANCH}"
   git checkout "${BRANCH}"
+  # если были локальные изменения — жестко откатываемся к origin/BRANCH
+  git reset --hard "origin/${BRANCH}"
   git pull --ff-only origin "${BRANCH}"
 }
 
@@ -44,7 +46,11 @@ stop_app() {
 
 build_app() {
   echo "[maven] mvn -B -U clean package -DskipTests"
-  mvn -B -U clean package -DskipTests
+  if [[ -x ./mvnw ]]; then
+    ./mvnw -B -U clean package -DskipTests
+  else
+    mvn -B -U clean package -DskipTests
+  fi
 }
 
 write_env_and_unit() {
@@ -52,20 +58,18 @@ write_env_and_unit() {
 
   echo "[env] ${ENV_FILE}"
   sudo install -d -m0755 "${ENV_DIR}"
+  # Пишем значения сразу, без sed
   sudo tee "${ENV_FILE}" >/dev/null <<EOF
-  JAVA_OPTS="${JAVA_OPTS}"
-  APP_OPTS="${APP_OPTS:-}"
+JAVA_OPTS="${JAVA_OPTS}"
+APP_OPTS="${APP_OPTS:-}"
 EOF
   sudo chmod 0644 "${ENV_FILE}"
 
-  # подставим твои JAVA_OPTS, если заданы вверху
-  sudo sed -i "s|^JAVA_OPTS=.*|JAVA_OPTS=\"'"${JAVA_OPTS}"'\"|" "${ENV_FILE}"
-
   echo "[unit] ${SERVICE_FILE}"
-  # важное: одинарный heredoc, чтобы $ не раскрывались
+  # Одинарный heredoc — переменные не раскрываются; подставим ниже через sed.
   sudo tee "${SERVICE_FILE}" >/dev/null <<'EOF'
 [Unit]
-Description=mapper (Quarkus fast-jar in-place)
+Description=mock (Quarkus fast-jar in-place)
 After=network-online.target
 Wants=network-online.target
 
@@ -84,8 +88,12 @@ LimitNOFILE=65536
 WantedBy=multi-user.target
 EOF
 
-  # подставим реальные значения путей/пользователя
-  sudo sed -i "s|__RUN_USER__|${RUN_USER}|; s|__WORKDIR__|${WORKDIR}|; s|__ENV_FILE__|${ENV_FILE}|;" "${SERVICE_FILE}"
+  # Подставляем реальные значения
+  sudo sed -i \
+    -e "s|__RUN_USER__|${RUN_USER}|g" \
+    -e "s|__WORKDIR__|${WORKDIR}|g" \
+    -e "s|__ENV_FILE__|${ENV_FILE}|g" \
+    "${SERVICE_FILE}"
 }
 
 enable_and_start() {

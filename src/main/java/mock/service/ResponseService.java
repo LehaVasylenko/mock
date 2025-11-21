@@ -21,6 +21,7 @@ public class ResponseService {
 
     public Response buildResponseWithHeaders(Object body, int status, long startTime, int length, String path) {
         long endTime = startTime + delayConfig.getDelay();
+        log.info("Delay applied {} ms", delayConfig.getDelay());
         if (System.currentTimeMillis() <= endTime) {
             try {
                 Thread.sleep(endTime - System.currentTimeMillis());

@@ -36,7 +36,7 @@ public class AutomationService {
         return Uni.createFrom().item(token);
     }
 
-    @Scheduled(cron = "0 */1 * * * ?")
+//    @Scheduled(cron = "0 */1 * * * ?")
     void schedule() {
         int h = LocalDateTime.now().getHour();
         if (h > 19 || h < 8) return;
@@ -52,9 +52,9 @@ public class AutomationService {
         this.init();
     }
 
-    void onStart(@Observes StartupEvent ev) {
-        this.init();
-    }
+//    void onStart(@Observes StartupEvent ev) {
+//        this.init();
+//    }
 
     private void init() {
         this.auth().subscribe().with(r -> {

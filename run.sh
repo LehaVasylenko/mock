@@ -9,6 +9,7 @@ JAVA_OPTS='-XX:+UseStringDeduplication -Xms256m -Xmx512m'
 ### === Пути ===
 RUN_USER="$(id -un)"
 REPO_DIR="$(pwd)"
+DB_DIR="${REPO_DIR}/db"
 WORKDIR="${REPO_DIR}/target/quarkus-app"
 RUN_JAR="${WORKDIR}/quarkus-run.jar"
 ENV_DIR="/etc/${APP_NAME}"
@@ -62,6 +63,7 @@ write_env_and_unit() {
   sudo tee "${ENV_FILE}" >/dev/null <<EOF
 JAVA_OPTS="${JAVA_OPTS}"
 APP_OPTS="${APP_OPTS:-}"
+OUTBOX_DIR="${DB_DIR}"
 EOF
   sudo chmod 0644 "${ENV_FILE}"
 
